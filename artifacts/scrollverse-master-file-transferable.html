@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>Scrollverse Master File Transferable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f1e7; --surface:#fffdf8; --surface2:#efe8d8; --ink:#1a1712; --muted:#6b6355; --line:#ddd2bd;
+  --gold:#9a7b2e; --gold-bg:#fdf3d7; --gold-ink:#5c4a12;
+  --red:#b42318; --red-bg:#fef0ee; --green:#067647; --green-bg:#ecfdf3;
+  --amber:#b54708; --amber-bg:#fffaeb; --chip:#1a1712;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#0d0b08; --surface:#171410; --surface2:#211c16; --ink:#f2ead8; --muted:#a89f8d; --line:#332c22;
+  --gold:#d4af37; --gold-bg:#2a2310; --gold-ink:#f5d97a; --red:#f97066; --red-bg:#2b1412; --green:#32d583; --green-bg:#0f2a1e;
+  --amber:#fdb022; --amber-bg:#2b2008; --chip:#f2ead8; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",system-ui,sans-serif;line-height:1.55}
+a{color:var(--gold)}
+button,select{font:inherit;cursor:pointer}
+button,[role="button"],label.checkrow{min-height:44px}
+.mono{font-family:"JetBrains Mono",monospace}
+.wrap{max-width:1120px;margin:0 auto;padding:0 18px 64px}
+.mockbar{background:#1a1712;color:#f5d97a;text-align:center;padding:10px 14px;font-family:"JetBrains Mono",monospace;font-size:12.5px;letter-spacing:.06em;font-weight:600}
+@media(prefers-color-scheme:dark){.mockbar{background:#f5d97a;color:#1a1712}}
+header.hero{padding:34px 0 8px}
+.kicker{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
+h1{font-family:"Cinzel",serif;font-size:clamp(30px,6vw,52px);line-height:1.02;margin:10px 0 10px;letter-spacing:-.01em}
+.lede{font-size:17px;color:var(--muted);max-width:720px;margin:0}
+.metaRow{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600}
+.pill.lock{color:var(--red);border-color:var(--red)}
+.pill.gold{background:var(--gold-bg);color:var(--gold-ink);border-color:var(--gold)}
+nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 6px}
+nav.toc a{border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;padding:9px 13px;border-radius:999px;font-size:13.5px;font-weight:600;min-height:40px;display:inline-flex;align-items:center}
+section.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:18px}
+section.card h2{font-family:"Cinzel",serif;font-size:22px;margin:2px 0 4px}
+section.card h3{font-size:16px;margin:18px 0 6px}
+.sub{color:var(--muted);font-size:14.5px;margin:0 0 14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+/* Gates */
+.gate{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+.gate:first-of-type{border-top:none}
+.gate b{display:block;font-size:15.5px}
+.gate span{font-size:13px;color:var(--muted)}
+.switch{position:relative;width:62px;height:34px;flex:0 0 auto;border-radius:999px;background:var(--surface2);border:1.5px solid var(--line);padding:0}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:var(--red);transition:left .18s ease}
+.switch[aria-checked="true"]::after{left:29px;background:var(--green)}
+.locktag{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;color:var(--red);background:var(--red-bg);padding:3px 8px;border-radius:999px;white-space:nowrap}
+/* Checklist */
+.checkrow{display:flex;gap:12px;align-items:flex-start;padding:12px 12px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;background:var(--bg);cursor:pointer}
+.checkrow input{width:22px;height:22px;margin-top:2px;accent-color:var(--gold);flex:0 0 auto}
+.checkrow b{font-size:15px}
+.checkrow small{display:block;color:var(--muted)}
+.progressWrap{height:12px;background:var(--surface2);border-radius:999px;overflow:hidden;border:1px solid var(--line)}
+.progressBar{height:100%;width:0%;background:var(--gold);transition:width .3s ease}
+.progressMeta{display:flex;justify-content:space-between;align-items:center;margin:10px 0 6px;font-size:14px;font-weight:600}
+.statusBox{border-radius:12px;padding:12px 14px;font-size:14.5px;font-weight:600}
+.statusBox.wait{background:var(--amber-bg);color:var(--amber)}
+.statusBox.ready{background:var(--green-bg);color:var(--green)}
+/* Audit */
+.auditRow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;border-top:1px solid var(--line)}
+.auditRow:first-of-type{border-top:none}
+.seg{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;flex:0 0 auto}
+.seg button{border:none;background:var(--surface);padding:9px 14px;font-weight:700;font-size:13px;min-height:40px}
+.seg button.on-pass{background:var(--green);color:#fff}
+.seg button.on-fail{background:var(--red);color:#fff}
+.bigPill{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:14px;padding:10px 14px;border-radius:12px;text-align:center}
+.bigPill.pass{background:var(--green-bg);color:var(--green);border:1px solid var(--green)}
+.bigPill.fail{background:var(--red-bg);color:var(--red);border:1px solid var(--red)}
+.btn{border:none;border-radius:12px;padding:12px 18px;font-weight:700;font-size:15px;background:var(--ink);color:var(--bg);min-height:48px}
+.btn.gold{background:var(--gold);color:#fff}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn:active{transform:scale(.98)}
+/* Living Pyramid */
+.pyrLayout{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:start}
+@media(max-width:820px){.pyrLayout{grid-template-columns:1fr}}
+.pyrStage{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:16px 12px 10px}
+.pyrStage svg{width:100%;height:auto;display:block}
+.pyrLayer{cursor:pointer;outline:none}
+.pyrLayer polygon,.pyrLayer path{fill:var(--surface2);stroke:var(--line);stroke-width:1.5;transition:fill .18s ease}
+.pyrLayer:hover polygon,.pyrLayer:hover path,.pyrLayer:focus-visible polygon,.pyrLayer:focus-visible path{fill:var(--gold-bg)}
+.pyrLayer.active polygon,.pyrLayer.active path{fill:var(--gold);stroke:var(--gold-ink)}
+.pyrLayer text{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ink);pointer-events:none;text-anchor:middle}
+.pyrLayer.active text{fill:#fff}
+@media(prefers-color-scheme:dark){.pyrLayer.active text{fill:#171410}}
+.pyrBtns{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:12px}
+@media(max-width:640px){.pyrBtns{grid-template-columns:1fr 1fr}}
+.pyrBtns button{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:10px 6px;font-weight:700;font-size:13px;line-height:1.25}
+.pyrBtns button small{display:block;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.06em;color:var(--muted);font-weight:600;margin-top:2px}
+.pyrBtns button.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.pyrBtns button.active small{color:var(--gold)}
+.pyrBtns button .dot{color:var(--green)}
+.chamber{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--bg)}
+.chamber .tier{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.chamber h3{font-family:"Cinzel",serif;font-size:20px;margin:6px 0 6px}
+.chamber p{margin:0 0 10px;font-size:14.5px}
+.chamber ul{margin:8px 0;padding-left:20px}
+.chamber li{margin:5px 0;font-size:14.5px}
+.chamberNav{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.chamberNav .btn{flex:1;min-width:130px}
+/* Marketplace Homepage */
+.storeFrame{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--bg)}
+.storeTop{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;background:var(--ink);color:var(--bg);padding:12px 14px}
+.storeTop b{font-family:"Cinzel",serif;letter-spacing:.04em;font-size:16px}
+.storeTop .dots{display:flex;gap:6px}
+.storeTop .dots i{width:10px;height:10px;border-radius:50%;background:var(--gold);display:block;opacity:.9}
+.storeTop .dots i:nth-child(2){opacity:.55}.storeTop .dots i:nth-child(3){opacity:.3}
+.storeSearchRow{display:flex;flex-wrap:wrap;gap:8px;padding:12px;background:var(--surface);border-bottom:1px solid var(--line)}
+.storeSearchRow input[type="search"]{flex:1;min-width:200px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:11px 16px;font:inherit;min-height:44px}
+.storeSearchRow select{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:10px 12px;min-height:44px;font-weight:600}
+.storeHero{padding:22px 18px 16px;background:linear-gradient(135deg,var(--gold-bg),var(--surface) 62%);border-bottom:1px solid var(--line)}
+.storeHero h3{font-family:"Cinzel",serif;font-size:clamp(24px,4vw,36px);line-height:1.05;margin:4px 0 8px}
+.storeHero p{margin:0;color:var(--muted);max-width:640px;font-size:15px}
+.laneBar{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px;background:var(--surface);border-bottom:1px solid var(--line)}
+@media(max-width:640px){.laneBar{grid-template-columns:1fr}}
+.lane{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--bg)}
+.lane b{display:block;font-size:13.5px}
+.lane span{font-size:12.5px;color:var(--muted)}
+.lane.active{border-color:var(--gold);background:var(--gold-bg);color:var(--gold-ink)}
+.lane.active span{color:var(--gold-ink)}
+.catFilters{display:flex;flex-wrap:wrap;gap:7px;padding:12px 12px 4px;background:var(--bg)}
+.catFilters button{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 13px;font-weight:700;font-size:13px;min-height:40px}
+.catFilters button.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.storeGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:12px}
+@media(max-width:820px){.storeGrid{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){.storeGrid{grid-template-columns:1fr}}
+.storeCard{text-align:left;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:6px;min-height:132px;width:100%}
+.storeCard:hover{border-color:var(--gold)}
+.storeCard.active{border-color:var(--gold);background:var(--gold-bg)}
+.storeCard .thumb{height:52px;border-radius:10px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:24px;border:1px solid var(--line)}
+.storeCard b{font-size:15px;line-height:1.25}
+.storeCard small{color:var(--muted);font-size:12.5px;line-height:1.4}
+.storeCard .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.storeDetail{margin:0 12px 12px;border:1px solid var(--gold);border-radius:14px;padding:16px;background:var(--surface)}
+.storeDetail h4{font-family:"Cinzel",serif;font-size:19px;margin:4px 0 6px}
+.storeDetail p{margin:0 0 10px;font-size:14.5px}
+.miniTenant{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.miniTenant button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:8px 12px;font-weight:700;font-size:13px}
+.miniTenant button.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+/* Tenants */
+.tenantTabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+@media(max-width:640px){.tenantTabs{grid-template-columns:1fr 1fr}}
+.tenantTabs button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:12px 8px;font-weight:700}
+.tenantTabs button.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.catalog{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+@media(max-width:700px){.catalog{grid-template-columns:1fr}}
+.catItem{border:1px solid var(--line);border-radius:12px;padding:13px;background:var(--bg)}
+.catItem b{display:block;font-size:14.5px}
+.catItem span{font-size:12.5px;color:var(--muted)}
+.tag{font-family:"JetBrains Mono",monospace;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+/* Assets */
+.asset{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:14px 0;border-top:1px solid var(--line)}
+.asset:first-of-type{border-top:none}
+.asset b{font-size:15.5px}
+.asset .type{font-size:13px;color:var(--muted)}
+.assetStatus{font-family:"JetBrains Mono",monospace;font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:999px;background:var(--amber-bg);color:var(--amber);white-space:nowrap}
+.checkResult{flex-basis:100%;font-size:14px;border-radius:10px;padding:10px 12px;display:none}
+.checkResult.show{display:block}
+.checkResult.missing{background:var(--amber-bg);color:var(--amber)}
+.checkResult.ok{background:var(--green-bg);color:var(--green)}
+/* Log */
+.logBox{background:#12100d;color:#e8dfc8;border-radius:12px;padding:14px;font-family:"JetBrains Mono",monospace;font-size:12.8px;max-height:320px;overflow:auto}
+@media(prefers-color-scheme:dark){.logBox{background:#000;border:1px solid var(--line)}}
+.logBox div{padding:5px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.logBox div:last-child{border-bottom:none}
+.logTime{color:#d4af37}
+/* Docs */
+pre.fileText{white-space:pre-wrap;word-break:break-word;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:16px;font-family:"JetBrains Mono",monospace;font-size:12.8px;max-height:480px;overflow:auto;line-height:1.6}
+.libGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:700px){.libGrid{grid-template-columns:1fr}}
+.lib{border:1px solid var(--line);border-radius:12px;padding:13px;background:var(--bg)}
+.lib b{display:block;margin-bottom:3px}
+.lib span{font-size:13.5px;color:var(--muted)}
+ul.tight{margin:6px 0;padding-left:20px}
+ul.tight li{margin:4px 0}
+footer{margin-top:28px;color:var(--muted);font-size:13.5px;text-align:center}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;background:var(--ink);color:var(--bg);padding:11px 16px;border-radius:999px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s;z-index:20;max-width:92vw;text-align:center}
+.toast.show{opacity:1}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="mockbar">⚠ MOCK ONLY — NO REAL TRANSACTIONS · NO WALLET · NO MINTING · NO LIVE DEPLOYMENT</div>
+
+<div class="wrap">
+<header class="hero">
+  <div class="kicker">ScrollVerse · ROSEVAULT Fortress · Transferable Master File</div>
+  <h1>ROSEVAULT + Audit Dashboard</h1>
+  <p class="lede">The full click-through prototype — four panels in one file. Flip the gates, run the checklist, climb the pyramid, then walk through the Marketplace Homepage exactly as each tenant sees it. Everything is local and non-transactional until an owner release record exists.</p>
+  <div class="metaRow">
+    <span class="pill lock">● ALL GATES LOCKED</span>
+    <span class="pill gold">Owner: Chais Hill · ScrollVerse / Omnitech1</span>
+    <span class="pill">Mode: Staging only</span>
+    <span class="pill">4 Panels · 1 Prototype</span>
+  </div>
+  <nav class="toc" aria-label="Sections">
+    <a href="#gates">1 · Gates</a><a href="#checklist">Checklist</a><a href="#audit">2 · Audit</a>
+    <a href="#pyramid">3 · Living Pyramid</a><a href="#marketplace">4 · Marketplace Homepage</a><a href="#tenants">Tenant Switcher</a><a href="#assets">Asset Queue</a><a href="#log">Activity Log</a><a href="#masterfile">Master File</a>
+  </nav>
+</header>
+
+<!-- GATES + CHECKLIST -->
+<div class="grid2">
+<section class="card" id="gates">
+  <h2>Isolation Gates</h2>
+  <p class="sub">All four gates start <strong>LOCKED OFF</strong>. In this mock they can never open — try one and it snaps back.</p>
+  <div id="gateList"></div>
+  <p class="sub" style="margin-top:12px">Gate state is enforced by the ROSEVAULT Fortress rules: transactions excluded, wallet protected offline sandbox, minting excluded, autonomous posting false — until an explicit owner release record is filed per asset.</p>
+</section>
+
+<section class="card" id="checklist">
+  <h2>Release Checklist</h2>
+  <p class="sub">Per-asset release requires all five items. Completing them makes an asset <em>Ready for Review</em> — never automatically “Released.”</p>
+  <div id="checkList"></div>
+  <div class="progressMeta"><span id="progressLabel">0 of 5 complete</span><span id="progressPct">0%</span></div>
+  <div class="progressWrap"><div class="progressBar" id="progressBar"></div></div>
+  <div class="statusBox wait" id="checkStatus" style="margin-top:12px">Not ready — 5 items missing.</div>
+</section>
+</div>
+
+<!-- AUDIT -->
+<section class="card" id="audit">
+  <h2>Audit Dashboard</h2>
+  <p class="sub">The local invariant: TypeScript clean, tests passing, catalog clean, and no external hooks. One failure fails the whole invariant. Preview ≠ production.</p>
+  <div id="auditList"></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;margin-top:14px">
+    <div class="bigPill pass" id="auditPill" style="flex:1;min-width:220px">LOCAL INVARIANT: PASS</div>
+    <button class="btn gold" id="runAuditBtn" type="button">Run Local Audit</button>
+  </div>
+  <p class="sub" id="auditNote" style="margin-top:10px">Last run: not yet run in this session. Audit results are local project records only — they make no quantum-verification or production claims.</p>
+</section>
+
+<!-- LIVING PYRAMID EXPLORER -->
+<section class="card" id="pyramid">
+  <h2>Living Pyramid Explorer</h2>
+  <p class="sub">The third interactive panel — the whole Master File as one structure, apex to base. Tap a layer of the pyramid (or a chamber button) to enter it. Exploring never unlocks anything: every chamber reports its real gate status from the sections above.</p>
+
+  <div class="pyrLayout">
+    <div>
+      <div class="pyrStage">
+        <svg id="pyrSvg" viewBox="0 0 560 318" role="group" aria-label="Living Pyramid — five selectable layers">
+          <g class="pyrLayer" data-layer="apex" tabindex="0" role="button" aria-label="Apex — OASS Engine">
+            <path d="M280 14 L326 78 L234 78 Z"></path><text x="280" y="66">V · APEX</text>
+          </g>
+          <g class="pyrLayer" data-layer="fortress" tabindex="0" role="button" aria-label="Layer 4 — ROSEVAULT Fortress">
+            <polygon points="326,78 372,142 188,142 234,78"></polygon><text x="280" y="120">IV · FORTRESS</text>
+          </g>
+          <g class="pyrLayer" data-layer="libraries" tabindex="0" role="button" aria-label="Layer 3 — The 8 Libraries">
+            <polygon points="372,142 418,206 142,206 188,142"></polygon><text x="280" y="184">III · LIBRARIES</text>
+          </g>
+          <g class="pyrLayer" data-layer="catalog" tabindex="0" role="button" aria-label="Layer 2 — Catalog Chamber">
+            <polygon points="418,206 464,270 96,270 142,206"></polygon><text x="280" y="248">II · CATALOG</text>
+          </g>
+          <g class="pyrLayer" data-layer="foundation" tabindex="0" role="button" aria-label="Base — Tenant Foundation">
+            <polygon points="464,270 496,304 64,304 96,270"></polygon><text x="280" y="294">I · TENANT FOUNDATION</text>
+          </g>
+        </svg>
+        <div class="pyrBtns" id="pyrBtns" role="tablist" aria-label="Pyramid chambers"></div>
+      </div>
+      <div class="progressMeta"><span id="pyrProgressLabel">0 of 5 chambers explored</span><span id="pyrProgressPct">0%</span></div>
+      <div class="progressWrap"><div class="progressBar" id="pyrProgressBar"></div></div>
+      <p class="sub" style="margin-top:10px;margin-bottom:0">Explored chambers get a ✓ in the buttons above. Visiting all five completes the climb — it does not release, mint, or deploy anything.</p>
+    </div>
+
+    <div class="chamber" id="chamberPanel" aria-live="polite">
+      <div class="tier" id="chTier">Layer V · Apex</div>
+      <h3 id="chName">OASS Engine</h3>
+      <p id="chDesc"></p>
+      <div class="statusBox wait" id="chStatus"></div>
+      <ul id="chItems"></ul>
+      <p class="sub" id="chLink" style="margin-bottom:0"></p>
+      <div class="chamberNav">
+        <button class="btn ghost" type="button" id="pyrPrevBtn">← Chamber below</button>
+        <button class="btn gold" type="button" id="pyrNextBtn">Chamber above →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETPLACE HOMEPAGE — PANEL 4 -->
+<section class="card" id="marketplace">
+  <div class="kicker">Panel 04 · Click-Through Prototype</div>
+  <h2>Marketplace Homepage — Tenant Storefront View</h2>
+  <p class="sub">This is how they see more of themselves. The same homepage, four different storefronts. Switch tenant — here or in the Tenant Switcher below — and the hero, the active lane, the actions on every card, and what you are allowed to do all change. Nothing here sells, mints, or checks out.</p>
+
+  <div class="storeFrame">
+    <div class="storeTop">
+      <div style="display:flex;align-items:center;gap:10px"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><b>ScrollVerse Marketplace</b></div>
+      <span class="mono" style="font-size:11.5px;letter-spacing:.08em" id="storeTenantBadge">VIEWING AS: VISITOR</span>
+    </div>
+
+    <div class="storeHero">
+      <div class="kicker" id="storeHeroKicker">Free Reading · Open to all</div>
+      <h3 id="storeHeroTitle">Read the world. Start where you stand.</h3>
+      <p id="storeHeroText">You are browsing as a Visitor. Published previews are open to read — no account, no purchase, no wallet. When you recognise your own work in here, the other storefronts below show you where you belong in it.</p>
+      <div class="miniTenant" id="miniTenant" role="tablist" aria-label="Preview marketplace as tenant"></div>
+      <p class="sub" style="margin:10px 0 0;font-size:13px">Preview as: Visitor sees themselves as a reader · Creator sees a place to stage their work · Contributor sees where their contribution fits · Admin sees the queue they hold for everyone else.</p>
+    </div>
+
+    <div class="laneBar" id="laneBar" aria-label="Marketplace lanes">
+      <div class="lane" data-lane="free"><b>Free Reading</b><span>Open previews — Visitor lane</span></div>
+      <div class="lane" data-lane="purchase"><b>Direct Purchase — Staging</b><span>Storefront staging only — Creator lane · no checkout</span></div>
+      <div class="lane" data-lane="contribution"><b>Aligned Contribution — Staging</b><span>Contribution staging only — Contributor lane</span></div>
+    </div>
+
+    <div class="storeSearchRow">
+      <input type="search" id="storeSearch" placeholder="Search the storefront — try “Batman”, “Genesis”, “Lightning”…" aria-label="Search storefront items" />
+      <select id="storeSort" aria-label="Sort storefront">
+        <option value="featured">Featured first</option>
+        <option value="az">A – Z</option>
+        <option value="category">By category</option>
+      </select>
+    </div>
+
+    <div class="catFilters" id="catFilters" role="tablist" aria-label="Storefront categories"></div>
+    <div class="progressMeta" style="padding:0 12px"><span id="storeCountLabel">12 items in storefront</span><span id="storeViewedLabel">0 of 12 opened</span></div>
+
+    <div class="storeGrid" id="storeGrid"></div>
+
+    <div class="storeDetail" id="storeDetail" aria-live="polite">
+      <div class="tier" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700" id="sdKicker">Select an item</div>
+      <h4 id="sdTitle">Tap any card above to open its storefront view</h4>
+      <p id="sdDesc">Each item shows its category, its ROSEVAULT status, and — most importantly — what <em>you</em>, in your current tenant, can actually do with it. That is the point of this panel: the homepage does not show everyone the same door.</p>
+      <div class="statusBox wait" id="sdStatus">All items STAGED · Gates LOCKED OFF · No prices invented · No checkout in this prototype.</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
+        <button class="btn gold" type="button" id="sdActionBtn">Open as current tenant</button>
+        <button class="btn ghost" type="button" id="sdCheckBtn">Check Release</button>
+        <a class="btn ghost" href="#tenants" style="text-decoration:none;display:inline-flex;align-items:center">Compare all tenants ↓</a>
+      </div>
+      <div class="checkResult" id="sdResult" style="margin-top:10px"></div>
+    </div>
+
+    <div style="padding:12px 14px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;background:var(--surface)">
+      <span style="font-size:13px;color:var(--muted)">Homepage → Pyramid → Gates → Checklist — one click-through. Exploring never releases anything.</span>
+      <span style="display:flex;gap:7px;flex-wrap:wrap"><a href="#pyramid" style="font-weight:700;font-size:13px">↑ Pyramid</a><a href="#assets" style="font-weight:700;font-size:13px">Asset Queue ↓</a><a href="#log" style="font-weight:700;font-size:13px">Activity Log ↓</a></span>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px" id="tenantMirror">
+  </div>
+  <style>@media(max-width:700px){#tenantMirror{grid-template-columns:1fr 1fr!important}}</style>
+  <p class="sub" style="margin-top:10px;margin-bottom:0">The four cards above mirror the live Tenant Switcher. Pick a different mirror and the whole prototype — Tenant Switcher, Pyramid Foundation chamber, and this storefront — moves together.</p>
+</section>
+
+<!-- TENANTS -->
+<section class="card" id="tenants">
+  <h2>Tenant Switcher</h2>
+  <p class="sub">Four tenants, four different catalogs. Switching changes what you see and what you’re allowed to do.</p>
+  <div class="tenantTabs" id="tenantTabs" role="tablist"></div>
+  <div class="statusBox ready" id="tenantActions" style="margin-top:12px"></div>
+  <div class="catalog" id="catalogGrid"></div>
+</section>
+
+<!-- ASSETS -->
+<section class="card" id="assets">
+  <h2>Asset Queue</h2>
+  <p class="sub">Staged assets awaiting release review. Use <strong>Check Release</strong> on any asset — it evaluates the Release Checklist above and names exactly what’s missing. In this mock, no asset can become Live, Minted, or Sold.</p>
+  <div id="assetList"></div>
+</section>
+
+<!-- LOG -->
+<section class="card" id="log">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+    <div><h2 style="margin:0">Activity Log</h2><p class="sub" style="margin:2px 0 0">Every gate attempt, checklist change, audit run, pyramid chamber entered, and tenant switch — timestamped.</p></div>
+    <button class="btn ghost" id="clearLogBtn" type="button">Clear Log</button>
+  </div>
+  <div class="logBox" id="logBox" style="margin-top:12px" aria-live="polite"></div>
+</section>
+
+<!-- MASTER FILE -->
+<section class="card" id="masterfile">
+  <h2>The Master File</h2>
+  <p class="sub">The transferable record this dashboard sits on top of. Copy the handoff prompt and the full text into a new Muse chat to hand the whole system over.</p>
+
+  <h3>1 · Muse Handoff Prompt</h3>
+  <pre class="fileText" id="handoffText" style="max-height:220px">You are receiving the ScrollVerse Master File. Treat this file as the source of truth for structure and status.
+
+RULES:
+- Do NOT invent prices, inventory, rights, checkout, wallet, token, or deployment status.
+- Keep everything NON-TRANSACTIONAL until an owner release record exists.
+- ROSEVAULT gates govern: transactions EXCLUDED, wallet PROTECTED_OFFLINE_SANDBOX, minting EXCLUDED, autonomous posting FALSE.
+- Per-asset release requires: source file + rights evidence + contributor verification + destination URI + explicit owner release.
+- Separate three kinds of record: owner-authored record vs. local project record vs. external / future state. Never merge them.
+- Preview ≠ production. No quantum-verification claims.
+
+When asked to build, build ONE slice at a time and name it first: Homepage / ROSEVAULT Dashboard / Living Pyramid Explorer.</pre>
+  <button class="btn" type="button" data-copy="handoffText">Copy Handoff Prompt</button>
+
+  <h3>2 · Core Identity</h3>
+  <p><strong>ScrollVerse Omniversal Marketplace</strong> + <strong>OASS</strong> — Orchestrator, Continuous Learner, Autonomous Sandbox, Knowledge Broker. Dual-route architecture (web + ledger), bare-metal + CDN, with the 100-repo fleet consolidated into one Maximized Unified App.</p>
+
+  <h3>3 · ROSEVAULT Fortress</h3>
+  <ul class="tight">
+    <li><strong>Transactions:</strong> EXCLUDED until owner release record</li>
+    <li><strong>Wallet:</strong> PROTECTED_OFFLINE_SANDBOX</li>
+    <li><strong>Minting:</strong> EXCLUDED</li>
+    <li><strong>Autonomous posting:</strong> FALSE</li>
+    <li><strong>Per-asset release:</strong> source + rights evidence + contributor verification + destination URI + explicit owner release</li>
+  </ul>
+
+  <h3>4 · Tenant Model</h3>
+  <ul class="tight">
+    <li><strong>Visitor</strong> — Free Reading lane</li>
+    <li><strong>Creator</strong> — Upload staging · Direct Purchase (staging)</li>
+    <li><strong>Contributor</strong> — Aligned Contribution (staging)</li>
+    <li><strong>Admin</strong> — Review queue</li>
+  </ul>
+
+  <h3>5 · Audit Rules</h3>
+  <ul class="tight">
+    <li>Local invariant: TypeScript clean · tests passing · catalog clean · no external hooks</li>
+    <li>One metric at a time. Preview ≠ production.</li>
+    <li>No quantum-verification claims.</li>
+    <li>Owner-authored record, local project record, and external/future state stay separate.</li>
+  </ul>
+
+  <h3>6 · 8 Libraries, Portals &amp; Assets</h3>
+  <div class="libGrid">
+    <div class="lib"><b>1 · Core Infra</b><span>HyperQuantumSecurityAnchor, UniversalIPSplitEngine, MultiChannelProvenanceRegistry, ZK circuits</span></div>
+    <div class="lib"><b>2 · Frontend</b><span>Maximized Unified App — web + ledger dual route</span></div>
+    <div class="lib"><b>3 · Ecommerce</b><span>Shopify token-gated SKUs + Printful sync — staging only</span></div>
+    <div class="lib"><b>4 · Mobile</b><span>XLVIIIBlocks</span></div>
+    <div class="lib"><b>5 · Community</b><span>Guild vaults</span></div>
+    <div class="lib"><b>6 · Podcast / Media</b><span>Black Batman Seasons 1–3, MEIN Universe Ep 01 Genesis, Omni-Grid</span></div>
+    <div class="lib"><b>7 · Skill Library</b><span>32+ skills</span></div>
+    <div class="lib"><b>8 · OASS Engine</b><span>Orchestrator · Continuous Learner · Autonomous Sandbox · Knowledge Broker</span></div>
+  </div>
+  <p style="margin-top:12px"><strong>Catalog highlights:</strong> Black Batman S1 Ep 1–8 · S2 Ep 9–16 · S3 Ep 17–26 · Ep 10 <em>Walking Proof</em> · Ep 11 outline · Tracks: <em>Primordial Ignition Node</em>, <em>Neural Lightning</em>, <em>Crowned Victory</em>.</p>
+
+  <h3>7 · Living Pyramid Explorer</h3>
+  <p>The third interactive panel in this file (above, between the Audit Dashboard and the Tenant Switcher). Five layers, apex to base — each one a live view of a section of this record, not a separate system:</p>
+  <ul class="tight">
+    <li><strong>V · Apex — OASS Engine:</strong> Orchestrator · Continuous Learner · Autonomous Sandbox · Knowledge Broker</li>
+    <li><strong>IV · ROSEVAULT Fortress:</strong> the four isolation gates — all LOCKED OFF in the mock</li>
+    <li><strong>III · The 8 Libraries:</strong> Core Infra through OASS Engine</li>
+    <li><strong>II · Catalog Chamber:</strong> Black Batman S1–3, MEIN Universe Ep 01, Omni-Grid, and the three tracks — all STAGED</li>
+    <li><strong>I · Tenant Foundation:</strong> Visitor / Creator / Contributor / Admin and their staging lanes</li>
+  </ul>
+  <p class="sub">Each chamber reads the live state of its section — gate locks, the audit invariant, and checklist progress — and every chamber entered is written to the Activity Log. Exploring the pyramid changes nothing's release status.</p>
+
+  <h3>8 · Marketplace Homepage Mock — Panel 4</h3>
+  <p>The fourth interactive panel in this file (above, between the Living Pyramid Explorer and the Tenant Switcher) — the panel that completes the click-through prototype. It is a homepage, not a shop:</p>
+  <ul class="tight">
+    <li><strong>One homepage, four storefronts:</strong> the hero, active lane, and every card's action change with the tenant — Visitor / Creator / Contributor / Admin stay synced across the Marketplace, the Tenant Switcher, and the Pyramid Foundation chamber.</li>
+    <li><strong>12 storefront items:</strong> Black Batman S1, Ep 10 Walking Proof, Ep 11 Outline, MEIN Ep 01 Genesis, Omni-Grid, Primordial Ignition Node, Neural Lightning, Crowned Victory, XLVIIIBlocks, Guild Vaults, Shopify Token-Gated SKUs, Printful Sync — searchable and filterable by Series / Podcast &amp; Media / Music / Worlds / Community / Systems.</li>
+    <li><strong>Three lanes, honestly labelled:</strong> Free Reading (open) · Direct Purchase (staging, no checkout) · Aligned Contribution (staging).</li>
+    <li><strong>No invented commerce:</strong> no prices, no inventory, no checkout, no wallet — per the handoff rules. Every item reads STAGED, and its Check Release evaluates the same 5-item Release Checklist.</li>
+    <li><strong>Showing them more of themselves:</strong> each tenant mirror names what that person is in the system — reader, maker, builder, keeper — and the detail view restates it for the selected item.</li>
+  </ul>
+
+  <h3>9 · Full Master File Text</h3>
+  <p class="sub">Scrollable and copyable — the complete transferable block.</p>
+  <pre class="fileText" id="fullText">SCROLLVERSE MASTER FILE — TRANSFERABLE
+Owner: Chais Hill · ScrollVerse / Omnitech1
+
+[1] HANDOFF
+Treat this file as source of truth. Do not invent prices, inventory, rights, checkout, wallet, token, or deployment status. Non-transactional until owner release record.
+
+[2] CORE IDENTITY
+ScrollVerse Omniversal Marketplace + OASS (Orchestrator, Continuous Learner, Autonomous Sandbox, Knowledge Broker). Dual-route: web + ledger. Bare-metal + CDN. 100-repo fleet → one Maximized Unified App.
+
+[3] ROSEVAULT FORTRESS — FROZEN GATES
+Transactions: EXCLUDED until release record.
+Wallet: PROTECTED_OFFLINE_SANDBOX.
+Minting: EXCLUDED.
+Autonomous posting: FALSE.
+Per-asset release = source file + rights evidence + contributor verification + destination URI + explicit owner release.
+
+[4] TENANT MODEL
+Creator / Visitor / Contributor / Admin.
+Lanes: Free Reading / Direct Purchase (staging) / Aligned Contribution (staging).
+
+[5] AUDIT RULES
+Local invariant: TypeScript clean, tests passing, catalog clean, no external hooks.
+One metric at a time. Preview ≠ production. No quantum-verification claims.
+Records: owner-authored vs local project vs external/future — always separate.
+
+[6] LIBRARIES (8)
+Core Infra · Frontend · Ecommerce (Shopify token-gated SKUs + Printful sync, staging) · Mobile (XLVIIIBlocks) · Community (Guild vaults) · Podcast/Media · Skill Library (32+) · OASS Engine.
+
+[7] CATALOG
+Black Batman: S1 Ep 1–8, S2 Ep 9–16, S3 Ep 17–26. Ep 10 Walking Proof. Ep 11 outline.
+MEIN Universe Podcast Ep 01 Genesis. Omni-Grid.
+Tracks: Primordial Ignition Node · Neural Lightning · Crowned Victory.
+
+[8] DASHBOARD MOCK
+ROSEVAULT + Audit Dashboard is a working interactive MOCK only.
+No real transactions, wallet, minting, or live deployment.
+
+[9] LIVING PYRAMID EXPLORER
+Third interactive panel in the same file. Five layers, apex to base:
+V Apex — OASS Engine · IV ROSEVAULT Fortress · III The 8 Libraries · II Catalog Chamber · I Tenant Foundation.
+Each chamber reads the live state of its section (gates, audit invariant, checklist) and logs every visit.
+Exploring never releases, mints, sells, or deploys anything.
+
+[10] MARKETPLACE HOMEPAGE MOCK — PANEL 4 / FULL CLICK-THROUGH PROTOTYPE
+Fourth interactive panel in the same file, between the Pyramid and the Tenant Switcher.
+One homepage, four tenant storefronts (Visitor / Creator / Contributor / Admin), synced across the whole file.
+12 storefront items, searchable + filterable. Lanes: Free Reading / Direct Purchase (staging) / Aligned Contribution (staging).
+No prices, inventory, checkout, wallet, or minting invented or implied as live. All items STAGED.
+With Panels 1–4 together (Dashboard, Audit, Pyramid, Marketplace) the file is the full click-through prototype.</pre>
+  <button class="btn gold" type="button" data-copy="fullText">Copy Full Master File Text</button>
+
+  <h3>Prototype complete — all four panels</h3>
+  <p class="sub" style="margin-bottom:0">Built in this file: <strong>1 · ROSEVAULT + Audit Dashboard</strong>, <strong>2 · Audit invariant</strong>, <strong>3 · Living Pyramid Explorer</strong>, and <strong>4 · Marketplace Homepage with tenant storefront view</strong> — the three slices named in the handoff prompt (Homepage / ROSEVAULT Dashboard / Living Pyramid Explorer) are all here, in one click-through prototype. Nothing is live until an owner release record says so.</p>
+</section>
+
+<footer>ScrollVerse Master File Transferable · ROSEVAULT mock — staging only, nothing here moves money, mints, or deploys.</footer>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+  "use strict";
+  var logBox = document.getElementById('logBox');
+  var toastEl = document.getElementById('toast');
+  function now(){ return new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'}); }
+  function toast(msg){ toastEl.textContent = msg; toastEl.classList.add('show'); setTimeout(function(){ toastEl.classList.remove('show'); }, 2600); }
+  function log(msg){
+    var row = document.createElement('div');
+    var t = document.createElement('span'); t.className='logTime'; t.textContent = '['+now()+'] ';
+    row.appendChild(t); row.appendChild(document.createTextNode(msg));
+    logBox.appendChild(row); logBox.scrollTop = logBox.scrollHeight;
+  }
+
+  /* ---------- ISOLATION GATES ---------- */
+  var gates = [
+    {id:'transactions', name:'Transactions', desc:'Purchases, checkout, payouts'},
+    {id:'wallet', name:'Wallet', desc:'Protected offline sandbox'},
+    {id:'minting', name:'Minting', desc:'On-chain minting of any asset'},
+    {id:'posting', name:'Autonomous Posting', desc:'Unattended publishing to any channel'}
+  ];
+  var gateList = document.getElementById('gateList');
+  gates.forEach(function(g){
+    var row = document.createElement('div'); row.className='gate';
+    var left = document.createElement('div');
+    left.innerHTML = '<b></b><span></span>';
+    left.querySelector('b').textContent = g.name;
+    left.querySelector('span').textContent = g.desc;
+    var right = document.createElement('div'); right.style.display='flex'; right.style.alignItems='center'; right.style.gap='8px';
+    var tag = document.createElement('span'); tag.className='locktag'; tag.textContent='LOCKED OFF';
+    var sw = document.createElement('button'); sw.type='button'; sw.className='switch'; sw.setAttribute('role','switch'); sw.setAttribute('aria-checked','false'); sw.setAttribute('aria-label', g.name+' gate (locked off in mock)');
+    sw.addEventListener('click', function(){
+      sw.setAttribute('aria-checked','true');
+      setTimeout(function(){ sw.setAttribute('aria-checked','false'); }, 220);
+      log('Gate "'+g.name+'" — Blocked in mock — requires owner release record.');
+      toast(g.name+': blocked in mock — requires owner release record.');
+    });
+    right.appendChild(tag); right.appendChild(sw);
+    row.appendChild(left); row.appendChild(right);
+    gateList.appendChild(row);
+  });
+
+  /* ---------- RELEASE CHECKLIST ---------- */
+  var checks = [
+    {id:'source', label:'Source file', hint:'Original file attached and verified'},
+    {id:'rights', label:'Rights evidence', hint:'Ownership / licence evidence on file'},
+    {id:'contributor', label:'Contributor verification', hint:'All contributors confirmed'},
+    {id:'uri', label:'Destination URI', hint:'Where the asset will live once released'},
+    {id:'release', label:'Explicit owner release', hint:'Written release record from the owner'}
+  ];
+  var checkState = {};
+  var checkList = document.getElementById('checkList');
+  checks.forEach(function(c){
+    checkState[c.id]=false;
+    var label = document.createElement('label'); label.className='checkrow';
+    var input = document.createElement('input'); input.type='checkbox'; input.id='chk-'+c.id;
+    var txt = document.createElement('span');
+    var b = document.createElement('b'); b.textContent=c.label;
+    var s = document.createElement('small'); s.textContent=c.hint;
+    txt.appendChild(b); txt.appendChild(s);
+    label.appendChild(input); label.appendChild(txt);
+    input.addEventListener('change', function(){
+      checkState[c.id]=input.checked;
+      log('Checklist: "'+c.label+'" '+(input.checked?'checked':'unchecked')+' — '+doneCount()+'/5 complete.');
+      renderChecklist();
+    });
+    checkList.appendChild(label);
+  });
+  function doneCount(){ return checks.filter(function(c){return checkState[c.id];}).length; }
+  function missingLabels(){ return checks.filter(function(c){return !checkState[c.id];}).map(function(c){return c.label;}); }
+  function renderChecklist(){
+    var n = doneCount(), pct = n*20;
+    document.getElementById('progressBar').style.width = pct+'%';
+    document.getElementById('progressLabel').textContent = n+' of 5 complete';
+    document.getElementById('progressPct').textContent = pct+'%';
+    var box = document.getElementById('checkStatus');
+    if(n===5){ box.className='statusBox ready'; box.textContent='✓ Ready for Review — all 5 items complete. Still NOT “Released”: release requires the owner release record to be filed.'; }
+    else { box.className='statusBox wait'; box.textContent='Not ready — missing: '+missingLabels().join(', ')+'.'; }
+    if(typeof pyrVisited!=='undefined'){ enterChamber(currentLayer,false); }
+  }
+  renderChecklist();
+
+  /* ---------- AUDIT DASHBOARD ---------- */
+  var audits = [
+    {id:'ts', name:'TypeScript Clean', pass:true},
+    {id:'tests', name:'Tests Passing', pass:true},
+    {id:'catalog', name:'Catalog Clean', pass:true},
+    {id:'hooks', name:'No External Hooks', pass:true}
+  ];
+  var auditList = document.getElementById('auditList');
+  function renderAuditPill(){
+    var allPass = audits.every(function(a){return a.pass;});
+    var pill = document.getElementById('auditPill');
+    pill.className = 'bigPill '+(allPass?'pass':'fail');
+    pill.textContent = allPass ? 'LOCAL INVARIANT: PASS' : 'LOCAL INVARIANT: FAIL';
+    return allPass;
+  }
+  audits.forEach(function(a){
+    var row = document.createElement('div'); row.className='auditRow';
+    var name = document.createElement('b'); name.textContent=a.name; name.style.fontSize='15px';
+    var seg = document.createElement('div'); seg.className='seg';
+    var bp = document.createElement('button'); bp.type='button'; bp.textContent='Pass';
+    var bf = document.createElement('button'); bf.type='button'; bf.textContent='Fail';
+    function paint(){ bp.className = a.pass?'on-pass':''; bf.className = !a.pass?'on-fail':''; }
+    bp.addEventListener('click', function(){ if(!a.pass){ a.pass=true; paint(); renderAuditPill(); if(typeof pyrVisited!=='undefined'){ enterChamber(currentLayer,false); } log('Audit: "'+a.name+'" set to PASS.'); } });
+    bf.addEventListener('click', function(){ if(a.pass){ a.pass=false; paint(); renderAuditPill(); if(typeof pyrVisited!=='undefined'){ enterChamber(currentLayer,false); } log('Audit: "'+a.name+'" set to FAIL — local invariant broken.'); } });
+    paint(); seg.appendChild(bp); seg.appendChild(bf);
+    row.appendChild(name); row.appendChild(seg);
+    auditList.appendChild(row);
+  });
+  renderAuditPill();
+  document.getElementById('runAuditBtn').addEventListener('click', function(){
+    var ok = renderAuditPill();
+    var summary = audits.map(function(a){return a.name+': '+(a.pass?'PASS':'FAIL');}).join(' · ');
+    log('Local audit run at '+now()+' — '+(ok?'LOCAL INVARIANT: PASS':'LOCAL INVARIANT: FAIL')+' ('+summary+').');
+    document.getElementById('auditNote').textContent = 'Last run: '+now()+' — '+(ok?'all four checks passed.':'one or more checks failing — see log.')+' Local project record only; preview ≠ production.';
+    toast(ok ? 'Audit complete — LOCAL INVARIANT: PASS' : 'Audit complete — LOCAL INVARIANT: FAIL');
+  });
+
+  /* ---------- TENANT SWITCHER ---------- */
+  var tenants = {
+    visitor:{ label:'Visitor', actions:'Allowed actions: Free Reading only — read published previews. No uploads, no contributions, no purchases in staging.',
+      items:[['Black Batman — Ep 1','Free Read · Season 1'],['MEIN Universe — Ep 01 Genesis notes','Free Read · Podcast'],['Omni-Grid — Overview','Free Read · World']]},
+    creator:{ label:'Creator', actions:'Allowed actions: Upload staging — add drafts, attach source files, and prepare release packets for review.',
+      items:[['Ep 10 — Walking Proof','Draft · Black Batman S2'],['Ep 11 — Outline','Draft · Black Batman S2'],['Primordial Ignition Node','Staging · Track']]},
+    contributor:{ label:'Contributor', actions:'Allowed actions: Contribution staging — submit aligned contributions for verification before they join a release packet.',
+      items:[['Neural Lightning','Contribution · Track'],['Crowned Victory','Contribution · Track'],['Guild Vault — Shared Lore','Contribution · Community']]},
+    admin:{ label:'Admin', actions:'Allowed actions: Review queue — verify source files, rights evidence, and contributors; file or reject release packets.',
+      items:[['Review: Ep 10 — Walking Proof','Queue · Awaiting checklist'],['Review: Primordial Ignition Node','Queue · Awaiting checklist'],['Review: Crowned Victory','Queue · Awaiting checklist']]}
+  };
+  var tenantTabs = document.getElementById('tenantTabs');
+  var currentTenant = 'visitor';
+  function renderTenant(key){
+    currentTenant = key;
+    var t = tenants[key];
+    Array.prototype.forEach.call(tenantTabs.children, function(btn){ btn.classList.toggle('active', btn.getAttribute('data-t')===key); });
+    document.getElementById('tenantActions').textContent = t.label+' — '+t.actions;
+    if(typeof pyrVisited!=='undefined'){ enterChamber(currentLayer,false); }
+    if(typeof storeItems!=='undefined'){ renderMarketplaceHero(); renderStoreGrid(); }
+    var grid = document.getElementById('catalogGrid'); grid.innerHTML='';
+    t.items.forEach(function(it){
+      var d = document.createElement('div'); d.className='catItem';
+      var tag = document.createElement('span'); tag.className='tag'; tag.style.color='var(--gold)'; tag.textContent = key.toUpperCase()+' VIEW';
+      var b = document.createElement('b'); b.textContent = it[0];
+      var s = document.createElement('span'); s.textContent = it[1];
+      d.appendChild(tag); d.appendChild(b); d.appendChild(s); grid.appendChild(d);
+    });
+  }
+  Object.keys(tenants).forEach(function(key){
+    var btn = document.createElement('button'); btn.type='button'; btn.textContent=tenants[key].label; btn.setAttribute('data-t', key); btn.setAttribute('role','tab');
+    btn.addEventListener('click', function(){ if(currentTenant!==key){ renderTenant(key); log('Tenant switched to '+tenants[key].label+'.'); } });
+    tenantTabs.appendChild(btn);
+  });
+  renderTenant('visitor');
+
+  /* ---------- MARKETPLACE HOMEPAGE — PANEL 4 ---------- */
+  var storeItems = [
+    {id:'bb-s1', mark:'BB', cat:'Series', title:'Black Batman — Season 1 · Ep 1–8', type:'Series · Podcast / Media Library', blurb:'The opening season. Eight episodes that set the world, the code, and the proof that this universe was built to last.', desc:'Season 1 is the front door of the Black Batman arc (S1 Ep 1–8, S2 Ep 9–16, S3 Ep 17–26 in the full catalog). In the storefront it is presented as a collection — read the overview freely, stage it only through a release packet.'},
+    {id:'bb-ep10', mark:'10', cat:'Series', title:'Ep 10 — Walking Proof', type:'Black Batman · Season 2 episode', blurb:'The episode the queue keeps returning to. Staged, unreleased, and checked against the same five-item checklist as everything else.', desc:'Ep 10 Walking Proof sits in both the Catalog Chamber and the Asset Queue. Its storefront card is not a buy button — it is a status window: STAGED until source, rights, contributor, URI, and owner release are all on file.'},
+    {id:'bb-ep11', mark:'11', cat:'Series', title:'Ep 11 — Outline', type:'Black Batman · Season 2 outline', blurb:'The next chapter in outline form. Visible so Creators and Contributors can see exactly where the story is headed.', desc:'An outline, not a finished episode. Visitors can read its premise; Creators can stage against it; Contributors can align a contribution to it — Admin holds it in review.'},
+    {id:'mein', mark:'ME', cat:'Podcast & Media', title:'MEIN Universe — Ep 01 Genesis', type:'Podcast · MEIN Universe', blurb:'Episode 01, Genesis. The origin conversation for the MEIN Universe, shelved with the media library, not sold from it.', desc:'MEIN Universe Ep 01 Genesis is the podcast anchor of the storefront. Free-reading notes are open to Visitors; the full asset stays staged in the Podcast / Media library.'},
+    {id:'omni', mark:'OG', cat:'Worlds', title:'Omni-Grid — World Overview', type:'World · Omni-Grid', blurb:'The map of the whole. Every library, portal, and lane in ScrollVerse, drawn as one grid you can walk.', desc:'Omni-Grid is the world layer behind the marketplace itself. On the homepage it is the “see the whole board” card — the one that helps a new Visitor place every other item.'},
+    {id:'primordial', mark:'PI', cat:'Music', title:'Primordial Ignition Node', type:'Track · Music', blurb:'A track staged as a node, not a product listing. No price is shown because no price has been released.', desc:'Primordial Ignition Node — one of the three named tracks in the Master File, alongside Neural Lightning and Crowned Victory. Storefront status: STAGED. Action depends entirely on your tenant.'},
+    {id:'neural', mark:'NL', cat:'Music', title:'Neural Lightning', type:'Track · Music', blurb:'Fast, bright, and held in contribution staging — the track Contributors see first when they open the store.', desc:'Neural Lightning is catalogued as a Contribution in the Contributor view and a track in the Catalog Chamber. Same asset, different door — depending on who you are.'},
+    {id:'crowned', mark:'CV', cat:'Music', title:'Crowned Victory', type:'Track · Music', blurb:'The closing track of the three. In the Admin view it sits in the review queue; in the Visitor view, only its story is open.', desc:'Crowned Victory completes the three-track set named in the Master File. It cannot become Live, Minted, or Sold in this prototype — Check Release will tell you precisely why.'},
+    {id:'xlviii', mark:'48', cat:'Systems', title:'XLVIIIBlocks — Mobile', type:'Mobile · Library 4', blurb:'The mobile face of ScrollVerse. Library 4, presented on the homepage as the pocket storefront.', desc:'XLVIIIBlocks is the Mobile library. On the Marketplace Homepage it represents how the same tenant view compresses to a phone — same gates, same lanes, smaller screen.'},
+    {id:'guild', mark:'GV', cat:'Community', title:'Guild Vaults — Community', type:'Community · Library 5', blurb:'Where Contributors recognise each other. Shared lore, shared work, held in a vault — not a feed.', desc:'Guild Vaults are the Community library. For a Contributor, this is the most personal card on the homepage: it shows where an aligned contribution actually lands.'},
+    {id:'shopify', mark:'SK', cat:'Systems', title:'Shopify Token-Gated SKUs', type:'Ecommerce · Staging only', blurb:'The commerce concept from the Master File — token-gated SKUs, in staging. The card exists; checkout does not.', desc:'Ecommerce Library, staging only: Shopify token-gated SKUs + Printful sync. This card deliberately has no price, no inventory, and no checkout — the Master File forbids inventing any of them.'},
+    {id:'printful', mark:'PF', cat:'Systems', title:'Printful Sync — Staging', type:'Ecommerce · Staging only', blurb:'The fulfilment sync paired with the SKUs above. Shown on the homepage so the whole route is visible, end to end.', desc:'Printful Sync is the second half of the Ecommerce staging concept. Visible for planning and review; inactive until an owner release record opens the Transactions gate.'}
+  ];
+  var tenantHero = {
+    visitor:{kicker:'Free Reading · Open to all', title:'Read the world. Start where you stand.', text:'You are browsing as a Visitor. Published previews are open to read — no account, no purchase, no wallet. When you recognise your own work in here, the other storefronts show you where you belong in it.', lane:'free', action:'Read preview'},
+    creator:{kicker:'Creator Storefront · Upload staging', title:'Your work belongs on this shelf.', text:'You are browsing as a Creator. Every card now shows its staging door: attach a source, build a release packet, and prepare — not publish. The shelf is yours to fill, the vault still holds the release.', lane:'purchase', action:'Stage this item'},
+    contributor:{kicker:'Contributor Storefront · Aligned Contribution staging', title:'See where your piece completes the whole.', text:'You are browsing as a Contributor. Cards highlight where an aligned contribution fits — a track, a vault, a world. You are not shopping here; you are finding your place in the build.', lane:'contribution', action:'Align a contribution'},
+    admin:{kicker:'Admin Storefront · Review queue', title:'You hold the queue for everyone else.', text:'You are browsing as Admin. Every card shows its review state first. Nothing passes to Ready for Review without the five checklist items — and nothing passes to Released without the owner record.', lane:'all', action:'Review this item'}
+  };
+  var tenantSelf = {visitor:'As a Visitor, you see yourself as a reader — the story is open to you first.', creator:'As a Creator, you see yourself as the maker — your drafts have a shelf and a staging door.', contributor:'As a Contributor, you see yourself as a builder — your piece has a named place in the whole.', admin:'As Admin, you see yourself as the keeper — you verify what everyone else stages.'};
+  var storeFilter = 'All';
+  var storeViewed = {};
+  var selectedStoreId = null;
+  var catList = ['All','Series','Podcast & Media','Music','Worlds','Community','Systems'];
+  var catFiltersEl = document.getElementById('catFilters');
+  catList.forEach(function(cat){
+    var b=document.createElement('button'); b.type='button'; b.textContent=cat; b.setAttribute('data-cat',cat);
+    if(cat==='All') b.classList.add('active');
+    b.addEventListener('click', function(){ storeFilter=cat; Array.prototype.forEach.call(catFiltersEl.children,function(x){x.classList.toggle('active',x.getAttribute('data-cat')===cat);}); renderStoreGrid(); log('Marketplace: category filter set to "'+cat+'".'); });
+    catFiltersEl.appendChild(b);
+  });
+  var miniTenantEl = document.getElementById('miniTenant');
+  Object.keys(tenants).forEach(function(key){
+    var b=document.createElement('button'); b.type='button'; b.textContent=tenants[key].label; b.setAttribute('data-mt',key);
+    b.addEventListener('click', function(){ if(currentTenant!==key){ renderTenant(key); log('Marketplace: storefront preview switched to '+tenants[key].label+' — whole prototype synced.'); toast('Storefront now viewing as '+tenants[key].label+'.'); } });
+    miniTenantEl.appendChild(b);
+  });
+  var mirrorEl = document.getElementById('tenantMirror');
+  Object.keys(tenants).forEach(function(key){
+    var card=document.createElement('button'); card.type='button'; card.setAttribute('data-mirror',key);
+    card.style.cssText='text-align:left;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:13px;min-height:88px';
+    var b=document.createElement('b'); b.textContent=tenants[key].label; b.style.display='block';
+    var s=document.createElement('span'); s.textContent=tenantSelf[key]; s.style.cssText='font-size:13px;color:var(--muted);display:block;margin-top:4px;line-height:1.45';
+    card.appendChild(b); card.appendChild(s);
+    card.addEventListener('click', function(){ if(currentTenant!==key){ renderTenant(key); log('Tenant mirror: switched to '+tenants[key].label+' from Marketplace panel.'); } document.getElementById('marketplace').scrollIntoView({behavior:'smooth',block:'start'}); });
+    mirrorEl.appendChild(card);
+  });
+  function renderMarketplaceHero(){
+    var h = tenantHero[currentTenant];
+    document.getElementById('storeHeroKicker').textContent = h.kicker;
+    document.getElementById('storeHeroTitle').textContent = h.title;
+    document.getElementById('storeHeroText').textContent = h.text;
+    document.getElementById('storeTenantBadge').textContent = 'VIEWING AS: '+currentTenant.toUpperCase();
+    Array.prototype.forEach.call(document.querySelectorAll('#laneBar .lane'), function(l){ l.classList.toggle('active', h.lane==='all' || l.getAttribute('data-lane')===h.lane); });
+    Array.prototype.forEach.call(miniTenantEl.children, function(b){ b.classList.toggle('active', b.getAttribute('data-mt')===currentTenant); });
+    Array.prototype.forEach.call(mirrorEl.children, function(c){ var on=c.getAttribute('data-mirror')===currentTenant; c.style.borderColor= on?'var(--gold)':'var(--line)'; c.style.background= on?'var(--gold-bg)':'var(--bg)'; });
+    document.getElementById('sdActionBtn').textContent = h.action;
+    if(selectedStoreId){ openStoreItem(selectedStoreId,false); }
+  }
+  function filteredStoreItems(){
+    var q = (document.getElementById('storeSearch').value||'').toLowerCase().trim();
+    var sort = document.getElementById('storeSort').value;
+    var list = storeItems.filter(function(it){ return (storeFilter==='All'||it.cat===storeFilter) && (!q || (it.title+' '+it.cat+' '+it.type+' '+it.blurb).toLowerCase().indexOf(q)>-1); });
+    if(sort==='az'){ list = list.slice().sort(function(a,b){return a.title.localeCompare(b.title);}); }
+    if(sort==='category'){ list = list.slice().sort(function(a,b){return a.cat.localeCompare(b.cat)||a.title.localeCompare(b.title);}); }
+    return list;
+  }
+  function renderStoreGrid(){
+    var grid=document.getElementById('storeGrid'); if(!grid) return;
+    var list=filteredStoreItems(); grid.innerHTML='';
+    document.getElementById('storeCountLabel').textContent = list.length+' of '+storeItems.length+' items in storefront'+(storeFilter!=='All'?' · '+storeFilter:'');
+    var viewedCount=Object.keys(storeViewed).length;
+    document.getElementById('storeViewedLabel').textContent = viewedCount+' of '+storeItems.length+' opened';
+    if(list.length===0){ var empty=document.createElement('p'); empty.className='sub'; empty.style.gridColumn='1/-1'; empty.textContent='No storefront items match that search. Clear the search or pick another category.'; grid.appendChild(empty); return; }
+    list.forEach(function(it){
+      var card=document.createElement('button'); card.type='button'; card.className='storeCard'+(selectedStoreId===it.id?' active':'');
+      var thumb=document.createElement('span'); thumb.className='thumb'; thumb.textContent=it.mark; thumb.style.fontFamily="'JetBrains Mono',monospace"; thumb.style.fontWeight='700'; thumb.style.color='var(--gold)';
+      var tag=document.createElement('span'); tag.className='tag'; tag.style.color='var(--gold)'; tag.textContent=it.cat+(storeViewed[it.id]?' · ✓ OPENED':'');
+      var b=document.createElement('b'); b.textContent=it.title;
+      var sm=document.createElement('small'); sm.textContent=it.blurb;
+      var foot=document.createElement('span'); foot.className='foot';
+      var st=document.createElement('span'); st.className='assetStatus'; st.textContent='STAGED';
+      var act=document.createElement('span'); act.style.cssText='font-size:12.5px;font-weight:700'; act.textContent=tenantHero[currentTenant].action+' →';
+      foot.appendChild(st); foot.appendChild(act);
+      card.appendChild(thumb); card.appendChild(tag); card.appendChild(b); card.appendChild(sm); card.appendChild(foot);
+      card.addEventListener('click', function(){ openStoreItem(it.id,true); });
+      grid.appendChild(card);
+    });
+  }
+  function openStoreItem(id, shouldLog){
+    var it=null; storeItems.forEach(function(x){ if(x.id===id) it=x; }); if(!it) return;
+    selectedStoreId=id;
+    var first=!storeViewed[id]; storeViewed[id]=true;
+    document.getElementById('sdKicker').textContent = it.cat+' · '+it.type;
+    document.getElementById('sdTitle').textContent = it.title;
+    document.getElementById('sdDesc').textContent = it.desc+' '+tenantSelf[currentTenant];
+    var box=document.getElementById('sdStatus');
+    var n=doneCount();
+    box.className='statusBox '+(currentTenant==='visitor'?'ready':'wait');
+    box.textContent = currentTenant==='visitor' ? 'Visitor view: free-reading preview open. No staging, no purchase, no contribution from this tenant.' : (tenants[currentTenant].label+' view: '+tenants[currentTenant].actions+' Checklist: '+n+'/5 — status remains STAGED.');
+    document.getElementById('sdResult').className='checkResult';
+    document.getElementById('sdActionBtn').textContent = tenantHero[currentTenant].action;
+    renderStoreGrid();
+    if(shouldLog){ log('Marketplace: opened "'+it.title+'" as '+tenants[currentTenant].label+(first?' (first open)':'')+' — '+Object.keys(storeViewed).length+'/12 storefront items opened.'); if(Object.keys(storeViewed).length===12 && first){ log('Marketplace: all 12 storefront items opened as '+tenants[currentTenant].label+'. Release status unchanged — STAGED, gates LOCKED OFF.'); } }
+  }
+  document.getElementById('storeSearch').addEventListener('input', function(){ renderStoreGrid(); });
+  document.getElementById('storeSort').addEventListener('change', function(){ renderStoreGrid(); log('Marketplace: sort changed to "'+this.options[this.selectedIndex].text+'".'); });
+  document.getElementById('sdActionBtn').addEventListener('click', function(){
+    if(!selectedStoreId){ toast('Pick a storefront card first.'); log('Marketplace: tenant action pressed with no item selected.'); return; }
+    var it=null; storeItems.forEach(function(x){ if(x.id===selectedStoreId) it=x; });
+    var res=document.getElementById('sdResult'); res.classList.add('show');
+    if(currentTenant==='visitor'){ res.className='checkResult show ok'; res.textContent='✓ Free-reading preview for "'+it.title+'" — open in this mock. Nothing to buy, stage, or submit as a Visitor.'; log('Marketplace: Visitor read preview of "'+it.title+'".'); }
+    else { res.className='checkResult show missing'; res.textContent='Staging only — "'+tenantHero[currentTenant].action+'" for "'+it.title+'" is recorded as intent in this prototype. It does not publish, sell, mint, or submit anything: Transactions gate is LOCKED OFF.'; log('Marketplace: '+tenants[currentTenant].label+' action "'+tenantHero[currentTenant].action+'" on "'+it.title+'" — staging intent only, blocked from live action by ROSEVAULT.'); }
+    toast(tenantHero[currentTenant].action+': staging only in this prototype.');
+  });
+  document.getElementById('sdCheckBtn').addEventListener('click', function(){
+    if(!selectedStoreId){ toast('Pick a storefront card first.'); return; }
+    var it=null; storeItems.forEach(function(x){ if(x.id===selectedStoreId) it=x; });
+    var res=document.getElementById('sdResult'); res.classList.add('show');
+    var missing=missingLabels();
+    if(missing.length===0){ res.className='checkResult show ok'; res.textContent='✓ '+it.title+': checklist complete — Ready for Review. Still NOT Released, Live, Minted, or Sold.'; log('Marketplace Check Release — "'+it.title+'": Ready for Review (5/5). Still STAGED.'); }
+    else { res.className='checkResult show missing'; res.textContent='✕ '+it.title+' cannot be released. Missing '+missing.length+' of 5: '+missing.join(', ')+'.'; log('Marketplace Check Release — "'+it.title+'": BLOCKED, missing: '+missing.join(', ')+'.'); }
+  });
+  renderMarketplaceHero();
+  renderStoreGrid();
+
+  /* ---------- LIVING PYRAMID EXPLORER ---------- */
+  var pyramid = [
+    {id:'apex', tier:'Layer V · Apex', short:'V · Apex', name:'OASS Engine',
+      desc:'The engine at the top of the structure — the part that coordinates everything below it. This is Library 8 of the Master File, given its own chamber at the apex.',
+      link:'#masterfile', linkText:'See it in the Master File → §6, Library 8 · OASS Engine',
+      status:function(){ return {cls:'ready', text:'OASS — Orchestrator · Continuous Learner · Autonomous Sandbox · Knowledge Broker. Sandbox means staging: the engine coordinates the mock, it does not post, transact, or deploy on its own.'}; },
+      items:['Orchestrator — routes work across the 8 libraries','Continuous Learner — folds new records into the file','Autonomous Sandbox — experiments stay inside staging','Knowledge Broker — holds the transferable record together']},
+    {id:'fortress', tier:'Layer IV · Upper Chamber', short:'IV · Fortress', name:'ROSEVAULT Fortress',
+      desc:'The security layer directly under the apex. Every value-moving action in ScrollVerse has to pass this chamber — and in this mock, none of them can.',
+      link:'#gates', linkText:'Try the switches → Isolation Gates (above)',
+      status:function(){ return {cls:'wait', text:'🔒 All 4 gates LOCKED OFF — Transactions excluded · Wallet protected offline sandbox · Minting excluded · Autonomous posting FALSE. No chamber visit changes this.'}; },
+      items:['Transactions — EXCLUDED until owner release record','Wallet — PROTECTED_OFFLINE_SANDBOX','Minting — EXCLUDED','Autonomous Posting — FALSE','Per-asset release = source + rights + contributor + URI + owner release']},
+    {id:'libraries', tier:'Layer III · Middle Chamber', short:'III · Libraries', name:'The 8 Libraries',
+      desc:'The working shelves of the system — infrastructure, frontend, commerce, mobile, community, media, skills, and the engine itself. Commerce here is staging only.',
+      link:'#masterfile', linkText:'Full list → Master File §6 · 8 Libraries, Portals & Assets',
+      status:function(){ var ok = audits.every(function(a){return a.pass;}); return {cls: ok?'ready':'wait', text: ok ? '✓ Local invariant currently PASS — the libraries sit on a clean local record (TypeScript clean · tests passing · catalog clean · no external hooks). Preview ≠ production.' : '✕ Local invariant currently FAIL — one or more audit checks above are failing, so this chamber reports the structure as not clean. Fix it in the Audit Dashboard.'}; },
+      items:['1 · Core Infra — HyperQuantumSecurityAnchor, UniversalIPSplitEngine, MultiChannelProvenanceRegistry, ZK circuits','2 · Frontend — Maximized Unified App, web + ledger dual route','3 · Ecommerce — Shopify token-gated SKUs + Printful sync (staging)','4 · Mobile — XLVIIIBlocks','5 · Community — Guild vaults','6 · Podcast / Media — Black Batman, MEIN Universe, Omni-Grid','7 · Skill Library — 32+ skills','8 · OASS Engine — the apex chamber']},
+    {id:'catalog', tier:'Layer II · Lower Chamber', short:'II · Catalog', name:'Catalog Chamber',
+      desc:'Where the creative work lives — the series, the podcast, the world, and the tracks. Everything in this chamber is staged and checked against the same Release Checklist as the Asset Queue.',
+      link:'#assets', linkText:'Check a release → Asset Queue (below)',
+      status:function(){ var n = doneCount(); return {cls: n===5?'ready':'wait', text: n===5 ? '✓ Release Checklist is 5/5 — catalog assets are Ready for Review. Still NOT Released, Live, Minted, or Sold: the owner release record must be filed first.' : 'Release Checklist: '+n+' of 5 complete — missing: '+missingLabels().join(', ')+'. Catalog status remains STAGED.'}; },
+      items:['Black Batman — S1 Ep 1–8 · S2 Ep 9–16 · S3 Ep 17–26','Ep 10 — Walking Proof · Ep 11 — Outline','MEIN Universe Podcast — Ep 01 Genesis','Omni-Grid — world overview','Tracks — Primordial Ignition Node · Neural Lightning · Crowned Victory']},
+    {id:'foundation', tier:'Layer I · Base', short:'I · Foundation', name:'Tenant Foundation',
+      desc:'The base the whole pyramid stands on: who is inside the structure and what each tenant is allowed to do. Four tenants, three staging lanes, one free lane.',
+      link:'#tenants', linkText:'Switch tenants → Tenant Switcher (below)',
+      status:function(){ return {cls:'ready', text:'Current tenant view: '+tenants[currentTenant].label+' (see Tenant Switcher below). Lanes: Free Reading / Direct Purchase (staging) / Aligned Contribution (staging).'}; },
+      items:['Visitor — Free Reading lane','Creator — Upload staging · Direct Purchase (staging)','Contributor — Aligned Contribution (staging)','Admin — Review queue']}
+  ];
+  var pyrVisited = {};
+  var currentLayer = 'apex';
+  var pyrBtns = document.getElementById('pyrBtns');
+  function pyrIndex(id){ for(var i=0;i<pyramid.length;i++){ if(pyramid[i].id===id) return i; } return 0; }
+  pyramid.forEach(function(L){
+    var b = document.createElement('button'); b.type='button'; b.setAttribute('data-layer', L.id); b.setAttribute('role','tab');
+    var nm = document.createElement('span'); nm.textContent = L.name;
+    var sm = document.createElement('small'); sm.textContent = L.short;
+    var dot = document.createElement('span'); dot.className='dot'; dot.setAttribute('data-dot', L.id);
+    b.appendChild(nm); b.appendChild(sm); b.appendChild(dot);
+    b.addEventListener('click', function(){ enterChamber(L.id, true); });
+    pyrBtns.appendChild(b);
+  });
+  function renderPyrProgress(){
+    var n = Object.keys(pyrVisited).length, pct = n*20;
+    document.getElementById('pyrProgressBar').style.width = pct+'%';
+    document.getElementById('pyrProgressLabel').textContent = n+' of 5 chambers explored';
+    document.getElementById('pyrProgressPct').textContent = pct+'%';
+    Array.prototype.forEach.call(document.querySelectorAll('[data-dot]'), function(d){ d.textContent = pyrVisited[d.getAttribute('data-dot')] ? ' ✓ explored' : ''; });
+  }
+  function enterChamber(id, shouldLog){
+    var L = pyramid[pyrIndex(id)];
+    currentLayer = id;
+    var firstVisit = !pyrVisited[id];
+    pyrVisited[id] = true;
+    document.getElementById('chTier').textContent = L.tier;
+    document.getElementById('chName').textContent = L.name;
+    document.getElementById('chDesc').textContent = L.desc;
+    var st = L.status();
+    var box = document.getElementById('chStatus'); box.className = 'statusBox '+st.cls; box.textContent = st.text;
+    var ul = document.getElementById('chItems'); ul.innerHTML='';
+    L.items.forEach(function(it){ var li=document.createElement('li'); li.textContent=it; ul.appendChild(li); });
+    var lk = document.getElementById('chLink'); lk.innerHTML='';
+    var a = document.createElement('a'); a.href = L.link; a.textContent = L.linkText; lk.appendChild(a);
+    Array.prototype.forEach.call(document.querySelectorAll('.pyrLayer'), function(g){ g.classList.toggle('active', g.getAttribute('data-layer')===id); });
+    Array.prototype.forEach.call(pyrBtns.children, function(b){ b.classList.toggle('active', b.getAttribute('data-layer')===id); });
+    var idx = pyrIndex(id);
+    var prev = document.getElementById('pyrPrevBtn'), next = document.getElementById('pyrNextBtn');
+    prev.disabled = idx===pyramid.length-1; next.disabled = idx===0;
+    prev.style.opacity = prev.disabled ? '.45' : '1'; next.style.opacity = next.disabled ? '.45' : '1';
+    prev.textContent = idx<pyramid.length-1 ? '← Below: '+pyramid[idx+1].name : '← Base reached';
+    next.textContent = idx>0 ? 'Above: '+pyramid[idx-1].name+' →' : 'Apex reached ↑';
+    renderPyrProgress();
+    if(shouldLog){
+      log('Pyramid: entered "'+L.tier+' — '+L.name+'"'+(firstVisit?' (first visit)':'')+' — '+Object.keys(pyrVisited).length+'/5 chambers explored.');
+      if(Object.keys(pyrVisited).length===5 && firstVisit){ log('Pyramid: climb complete — all 5 chambers explored. Release status unchanged: gates still LOCKED OFF, catalog still STAGED.'); toast('Climb complete — all 5 chambers explored. Nothing released.'); }
+    }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.pyrLayer'), function(g){
+    var id = g.getAttribute('data-layer');
+    g.addEventListener('click', function(){ enterChamber(id, true); });
+    g.addEventListener('keydown', function(e){ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); enterChamber(id, true); } });
+  });
+  document.getElementById('pyrPrevBtn').addEventListener('click', function(){ var i=pyrIndex(currentLayer); if(i<pyramid.length-1) enterChamber(pyramid[i+1].id, true); });
+  document.getElementById('pyrNextBtn').addEventListener('click', function(){ var i=pyrIndex(currentLayer); if(i>0) enterChamber(pyramid[i-1].id, true); });
+  enterChamber('apex', false);
+
+  /* ---------- ASSET QUEUE ---------- */
+  var assets = [
+    {name:'Ep 10 — Walking Proof', type:'Black Batman · Season 2 episode'},
+    {name:'Ep 11 — Outline', type:'Black Batman · Season 2 outline'},
+    {name:'Primordial Ignition Node', type:'Track'},
+    {name:'Neural Lightning', type:'Track'},
+    {name:'Crowned Victory', type:'Track'}
+  ];
+  var assetList = document.getElementById('assetList');
+  assets.forEach(function(a){
+    var row = document.createElement('div'); row.className='asset';
+    var left = document.createElement('div');
+    var b = document.createElement('b'); b.textContent=a.name;
+    var ty = document.createElement('div'); ty.className='type'; ty.textContent=a.type;
+    left.appendChild(b); left.appendChild(ty);
+    var st = document.createElement('span'); st.className='assetStatus'; st.textContent='STAGED · NOT RELEASED';
+    var btn = document.createElement('button'); btn.type='button'; btn.className='btn ghost'; btn.textContent='Check Release';
+    var result = document.createElement('div'); result.className='checkResult';
+    btn.addEventListener('click', function(){
+      var missing = missingLabels();
+      result.classList.add('show');
+      if(missing.length===0){
+        result.className='checkResult show ok';
+        result.textContent='✓ '+a.name+': checklist complete — Ready for Review. Still NOT Released, Live, Minted, or Sold in this mock; the owner release record must be filed first.';
+        log('Check Release — "'+a.name+'": Ready for Review (5/5). Status remains STAGED in mock.');
+      } else {
+        result.className='checkResult show missing';
+        result.textContent='✕ '+a.name+' cannot be released. Missing '+missing.length+' of 5: '+missing.join(', ')+'. Status remains STAGED.';
+        log('Check Release — "'+a.name+'": BLOCKED, missing: '+missing.join(', ')+'.');
+      }
+    });
+    row.appendChild(left); row.appendChild(st); row.appendChild(btn); row.appendChild(result);
+    assetList.appendChild(row);
+  });
+
+  /* ---------- LOG + COPY ---------- */
+  document.getElementById('clearLogBtn').addEventListener('click', function(){
+    logBox.innerHTML=''; log('Log cleared. Dashboard state unchanged — all gates still LOCKED OFF.');
+    toast('Activity log cleared.');
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-copy]'), function(btn){
+    btn.addEventListener('click', function(){
+      var el = document.getElementById(btn.getAttribute('data-copy'));
+      var text = el.textContent;
+      function done(){ toast('Copied to clipboard.'); log('Copied: '+(btn.textContent||'block')+'.'); }
+      if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done, function(){ fallback(); }); } else { fallback(); }
+      function fallback(){ var ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy'); done();}catch(e){ toast('Copy failed — select the text manually.'); } document.body.removeChild(ta); }
+    });
+  });
+
+  log('Dashboard initialized — ROSEVAULT mock loaded. All 4 isolation gates LOCKED OFF.');
+  log('Tenant view: Visitor (Free Reading only). Audit invariant: PASS (local record only).');
+  log('Living Pyramid Explorer loaded — 5 chambers, apex to base. Starting chamber: V · Apex — OASS Engine.');
+  log('Marketplace Homepage loaded — Panel 4: 12 storefront items, viewing as Visitor. Full click-through prototype complete (4 panels, 1 file).');
+})();
+</script>
+</body>
+</html>

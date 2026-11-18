@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>Tory Lanez Crypto Music Playbook — Mirror, Match &amp; Exceed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Public+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf6ef; --surface:#fffdf8; --surface2:#f1eadd; --ink:#171410; --muted:#5c5546; --line:#ddd2bd;
+  --gold:#9a6b0f; --gold-bg:#f7e8c3; --red:#9b2c1f; --red-bg:#fbe9e5; --green:#1f6b3a; --green-bg:#e2f2e6;
+  --amber:#7a5200; --amber-bg:#fdf0cd; --chip:#efe8d8;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#131109; --surface:#1c1912; --surface2:#262114; --ink:#f2ecdc; --muted:#b8ae97; --line:#3a3322;
+  --gold:#e3b341; --gold-bg:#3a2f10; --red:#ff9a8a; --red-bg:#3d1a14; --green:#7ed492; --green-bg:#14301e;
+  --amber:#f0c75e; --amber-bg:#382d0e; --chip:#2a2517; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",system-ui,sans-serif;line-height:1.6;font-size:16px}
+a{color:var(--gold);text-underline-offset:3px}
+button,[role="button"],select,summary,input:not([type="checkbox"],[type="radio"]){min-height:2.25rem}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px 64px}
+h1,h2{font-family:"Bebas Neue",sans-serif;letter-spacing:.02em;line-height:.95;font-weight:400}
+h2{font-size:clamp(32px,5vw,46px);margin:0 0 10px}
+h3{font-size:18px;margin:0 0 6px}
+p{margin:0 0 12px}
+.mono{font-family:"IBM Plex Mono",monospace}
+.muted{color:var(--muted)}
+.small{font-size:13.5px}
+section{padding:38px 0 6px;border-top:2px solid var(--ink);margin-top:38px}
+section:first-of-type{border-top:none;margin-top:0}
+
+/* Hero */
+.hero{padding:36px 0 8px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.hero h1{font-size:clamp(52px,10vw,104px);margin:10px 0 6px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.lede{font-size:clamp(18px,2.6vw,22px);max-width:720px;line-height:1.45}
+.verdict{background:var(--ink);color:var(--bg);padding:22px;border-radius:6px;margin:24px 0 0}
+.verdict strong{color:var(--gold)}
+.verdict p{margin:0}
+@media (prefers-color-scheme: dark){.verdict{background:var(--surface2);color:var(--ink)}}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:5px 10px;border-radius:999px;border:1px solid var(--line)}
+.badge.verified{background:var(--green-bg);color:var(--green);border-color:transparent}
+.badge.claimed{background:var(--amber-bg);color:var(--amber);border-color:transparent}
+.badge.failed{background:var(--red-bg);color:var(--red);border-color:transparent}
+.badge.open{background:var(--chip);color:var(--muted);border-color:transparent}
+
+/* Timeline */
+.timeline{display:grid;gap:14px;margin-top:18px}
+@media(min-width:760px){.timeline{grid-template-columns:1fr 1fr 1fr}}
+.tcard{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--gold);border-radius:6px;padding:18px}
+.tcard.bad{border-top-color:var(--red)}
+.tcard .date{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--gold);font-weight:600}
+.tcard h3{font-size:20px;margin:6px 0}
+.bigstat{font-family:"Bebas Neue",sans-serif;font-size:40px;line-height:1;margin:10px 0 2px}
+.tcard ul{margin:8px 0 0;padding-left:18px}
+.tcard li{margin-bottom:4px;font-size:14.5px}
+
+/* Tables */
+.tblwrap{overflow:hidden;border:1px solid var(--line);border-radius:6px;margin:16px 0}
+table{width:100%;border-collapse:collapse;background:var(--surface);font-size:14.5px}
+th,td{text-align:left;padding:11px 13px;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:var(--surface2);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+tr:last-child td{border-bottom:none}
+@media(max-width:680px){
+  table,thead,tbody,tr,td{display:block;width:100%}
+  thead{display:none}
+  tr{border-bottom:2px solid var(--line);padding:6px 0}
+  td{border-bottom:none;padding:6px 13px}
+  td::before{content:attr(data-l);display:block;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+}
+
+/* Two col */
+.grid2{display:grid;gap:14px}
+@media(min-width:760px){.grid2{grid-template-columns:1fr 1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px}
+.panel.good{border-top:5px solid var(--green)}
+.panel.badp{border-top:5px solid var(--red)}
+.panel ul{margin:6px 0 0;padding-left:18px}
+.panel li{margin-bottom:6px}
+
+/* Failures */
+.failgrid{display:grid;gap:10px;margin-top:16px}
+@media(min-width:700px){.failgrid{grid-template-columns:1fr 1fr}}
+.fail{display:flex;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px}
+.fail .n{font-family:"Bebas Neue",sans-serif;font-size:28px;color:var(--red);line-height:1;min-width:30px}
+.fail p{margin:0;font-size:14.5px}
+.fail p b{display:block;font-size:15px}
+
+/* Chart */
+.chartbox{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px;margin-top:16px}
+.bar-row{display:grid;grid-template-columns:52px 1fr 74px;gap:10px;align-items:center;margin:10px 0;font-size:14px}
+.bar-track{background:var(--surface2);border-radius:4px;height:26px;overflow:hidden}
+.bar-fill{height:100%;background:var(--gold);border-radius:4px}
+.bar-fill.dim{background:var(--muted)}
+
+/* Calculator */
+.calc{background:var(--surface2);border-radius:6px;padding:20px;margin-top:16px}
+.calc label{font-weight:700;font-size:14px;display:block;margin-bottom:6px}
+.calc input[type=range]{width:100%;accent-color:var(--gold);min-height:2.25rem}
+.calc-out{display:grid;gap:12px;margin-top:14px}
+@media(min-width:700px){.calc-out{grid-template-columns:1fr 1fr 1fr}}
+.calc-out .cell{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px}
+.calc-out .v{font-family:"Bebas Neue",sans-serif;font-size:34px;line-height:1}
+.calc-out .l{font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:700}
+
+/* Playbook steps */
+.mme{display:grid;gap:14px;margin-top:18px}
+@media(min-width:820px){.mme{grid-template-columns:1fr 1fr 1fr}}
+.mme .step{border-radius:6px;padding:20px;color:#fff}
+.step.mirror{background:#4a4232}.step.match{background:#7a5a10}.step.exceed{background:#171410;border:2px solid var(--gold)}
+@media (prefers-color-scheme: dark){.step.exceed{background:#000}}
+.step .tag{font-family:"Bebas Neue",sans-serif;font-size:30px;letter-spacing:.03em}
+.step ul{margin:8px 0 0;padding-left:18px;font-size:14.5px}
+.step li{margin-bottom:6px}
+.blueprint{background:var(--gold-bg);border-radius:6px;padding:20px;margin-top:16px}
+.blueprint p:last-child{margin-bottom:0}
+.checklist{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:9px}
+@media(min-width:700px){.checklist{grid-template-columns:1fr 1fr}}
+.checklist li{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px 12px 42px;position:relative;font-size:14.5px}
+.checklist li::before{content:"✓";position:absolute;left:13px;top:10px;font-weight:800;color:var(--green);font-size:17px}
+.checklist li b{display:block}
+
+/* Legal */
+.legal{display:grid;gap:12px;margin-top:16px}
+@media(min-width:760px){.legal{grid-template-columns:1fr 1fr 1fr}}
+.case{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--red);border-radius:6px;padding:16px}
+.case .amt{font-family:"Bebas Neue",sans-serif;font-size:32px;color:var(--red);line-height:1}
+.dodont{display:grid;gap:14px;margin-top:14px}
+@media(min-width:760px){.dodont{grid-template-columns:1fr 1fr}}
+.dodont .panel ul{list-style:none;padding:0;margin:6px 0 0}
+.dodont li{padding-left:26px;position:relative;margin-bottom:7px;font-size:14.5px}
+.do li::before{content:"DO";position:absolute;left:0;top:2px;font-size:10px;font-weight:800;color:var(--green)}
+.dont li::before{content:"✕";position:absolute;left:2px;top:0;font-weight:800;color:var(--red)}
+
+/* ScrollVerse fit */
+.fit{display:grid;gap:12px;margin-top:16px}
+@media(min-width:760px){.fit{grid-template-columns:repeat(3,1fr)}}
+.fit .panel h3{color:var(--gold)}
+
+/* Open questions / sources */
+.oq{background:var(--surface);border:1px dashed var(--muted);border-radius:6px;padding:18px;margin-top:14px}
+.oq li{margin-bottom:7px}
+.sources{font-size:13.5px}
+.sources li{margin-bottom:8px;word-break:break-word}
+footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.note{background:var(--amber-bg);border-radius:6px;padding:14px 16px;font-size:14.5px;margin-top:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="kicker">Deep research · 17 November 2026 · For Chais Hill / ScrollVerse</div>
+  <h1>Mirror. Match.<br><em>Exceed.</em></h1>
+  <p class="lede">What Tory Lanez actually did when he fused crypto with his music — the real mechanics, the unverified headlines, the platform that stranded his fans — and the cleaner, stronger version built for ScrollVerse.</p>
+  <div class="legend">
+    <span class="badge verified">● Sourced / reported</span>
+    <span class="badge claimed">● Artist's claim — unverified</span>
+    <span class="badge failed">● Documented failure</span>
+    <span class="badge open">● Open question</span>
+  </div>
+  <div class="verdict">
+    <p><strong>The bottom line:</strong> Lanez ran two NFT music experiments in 2021 and one more in early 2022 — then, as far as the public record shows, nothing after that. The replicable mechanics are real and simple: limited-edition, low-price, direct-to-fan album NFTs with card checkout, plus real perks. But the 2021 version is <strong>not</strong> a template to copy literally. The market that made it work has fallen ~90%+, secondary royalties are no longer reliably enforced, and the exact resale-profit marketing Lanez used is precisely what drew SEC-style scrutiny. The 2026 version is smaller, self-custody-friendly, and marketed as a collectible / access pass — never as an investment.</p>
+  </div>
+</header>
+
+<!-- TIMELINE -->
+<section id="moves">
+  <h2>The three moves — 2021 to 2022</h2>
+  <p class="muted">Two distinct NFT music experiments in 2021, one more in early 2022. No official fungible token was ever found — an unauthenticated “ToryLanez” token on BNB Chain (8 Apr 2022, 0 holders, flagged “RugPulled”) has <b>no evidence linking it to Lanez</b> and is treated as an impersonator token, not his project.</p>
+  <div class="timeline">
+    <article class="tcard">
+      <div class="date">4 MARCH 2021 · BONDLY FINANCE</div>
+      <h3>Three unreleased songs</h3>
+      <div class="bigstat">&gt;$400,000</div>
+      <p class="small muted" style="margin:0">initial gross sales + resales · Bondly / Music Business Worldwide, 12 Mar 2021</p>
+      <ul>
+        <li>“Lady of Neptune”, “Distance”, “Y.D.L.R” — dropped ahead of the <i>PLAYBOY</i> album</li>
+        <li><b>450 copies</b>, bought by <b>&gt;300 collectors</b> — roughly $1,300+ per collector on average</li>
+        <li>Collect all three → virtual meet-and-greet, an unreleased track, signed merchandise</li>
+      </ul>
+      <p style="margin-top:10px"><span class="badge verified">The one that worked cleanly</span></p>
+    </article>
+    <article class="tcard bad">
+      <div class="date">10 AUGUST 2021 · E-NFT / EMMERSIVE</div>
+      <h3><i>When It's Dark</i> — the $1 album</h3>
+      <div class="bigstat">1,000,000 × $1</div>
+      <p class="small muted" style="margin:0">copies offered · pre-sale 4 Aug · drop 10 Aug, 5pm ET</p>
+      <ul>
+        <li>7 songs + 7 art pieces, on Ethereum, via Vinco Ventures' Emmersive Entertainment</li>
+        <li>Card or crypto payment — no wallet needed</li>
+        <li>Pre-order limit: up to 100 copies per buyer; resale opened 24 Aug 2021</li>
+      </ul>
+      <p style="margin-top:10px"><span class="badge claimed">“Sold out in 57 seconds” — unverified</span></p>
+    </article>
+    <article class="tcard bad">
+      <div class="date">14 JANUARY 2022 · DECENTAR LABS</div>
+      <h3>3NITY — co-founded platform</h3>
+      <div class="bigstat">0.1 ETH</div>
+      <p class="small muted" style="margin:0">starting mint price · three phases · “deflationary” burns</p>
+      <ul>
+        <li>Art collection on the “triality” of self — human / angel / demon heads, varying rarity</li>
+        <li>Rarest holders promised a share of $1m and a royalty based on holdings</li>
+        <li><b>No sales outcome was found</b> in the public record — and no evidence the $1m / royalty promise was paid</li>
+      </ul>
+      <p style="margin-top:10px"><span class="badge open">Outcome unknown</span></p>
+    </article>
+  </div>
+  <div class="note"><b>After 3NITY:</b> no further Lanez NFT drop, token, or Web3 partnership was found. His later music (<i>Sorry 4 What</i>, 2022; <i>Peterson</i>, 7 Mar 2025) was released by his team through conventional streaming, with no Web3 element found. His public story after Dec 2022 was dominated by his criminal case — convicted of three felonies relating to the shooting of Megan Thee Stallion, sentenced to 10 years.</div>
+</section>
+
+<!-- WHEN ITS DARK -->
+<section id="dark">
+  <h2><i>When It's Dark</i> — claimed vs. verified</h2>
+  <p>The headline that made Lanez the most-cited music-NFT case study of 2021 — and the headline no one could prove.</p>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Item</th><th>Detail</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td data-l="Item"><b>The claim</b></td><td data-l="Detail">“1 million copies sold in 57 seconds… I just made a million dollars in less than a minute.” Arithmetic: 1,000,000 × $1 = $1,000,000 gross <i>if</i> true.</td><td data-l="Status"><span class="badge claimed">Claimed</span></td></tr>
+      <tr><td data-l="Item"><b>Verification</b></td><td data-l="Detail"><i>Rolling Stone</i>'s September 2021 investigation: “there is no evidence to support Lanez' claim.” No on-chain sales ledger, audited figure, or platform disclosure was found. Lanez's personal profit was never independently established.</td><td data-l="Status"><span class="badge failed">Unverified</span></td></tr>
+      <tr><td data-l="Item"><b>The $50,000 flip</b></td><td data-l="Detail">Lanez said on Twitter/Instagram one copy had “already been flipped for $50,000”. No independently confirmed transaction record was found. By March 2022, a case-study author who bought a copy found resale listings ranging from <b>$2.50 to thousands of dollars</b>.</td><td data-l="Status"><span class="badge claimed">Claimed</span></td></tr>
+      <tr><td data-l="Item"><b>“Platinum in 57 seconds”</b></td><td data-l="Detail">Lanez's own equivalence — <b>no RIAA certification was found</b> in any source, and the drop did not translate into a conventional Billboard chart position.</td><td data-l="Status"><span class="badge failed">Not a certification</span></td></tr>
+      <tr><td data-l="Item"><b>Why $1 × 1,000,000?</b></td><td data-l="Detail">Deliberately mass-market, not scarce-collector: a price any fan could afford, card payment, and a supply so large that “1 million copies” itself became the headline. Lanez: “WHEN U CUT THE BULLSHIT OFF THE MIDDLEMAN, U BECOME A KING.” The trade-off: 1m near-identical copies is not scarcity — the value proposition was almost entirely the speculative resale story.</td><td data-l="Status"><span class="badge verified">Design intent</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="grid2">
+    <div class="panel good">
+      <h3>What buyers actually got</h3>
+      <ul>
+        <li>A digital copy of the 7-track album + 7 art pieces, each minted with a one-of-a-kind token as a ledger of ownership</li>
+        <li>Streaming access <b>exclusively inside the E-NFT platform and app</b> — the album was not on Spotify or YouTube at launch</li>
+        <li>A right to resell on E-NFT.com at a price the seller set — framed in the launch release as a “fan opportunity” to “potentially financially benefit from the resale distribution”</li>
+      </ul>
+    </div>
+    <div class="panel badp">
+      <h3>What buyers did <i>not</i> get</h3>
+      <ul>
+        <li><b>No copyright</b> in the songs</li>
+        <li><b>No share</b> of Lanez's streaming or publishing royalties</li>
+        <li><b>No guaranteed return</b> — despite the resale pitch</li>
+        <li>Lanez was to receive a percentage of every resale “indefinitely” — <b>the exact percentage was never stated in any source found. Do not quote one.</b> What is documented is the platform's cut: <b>E-NFT charged sellers a 15% fee</b> on secondary transactions, on top of Ethereum gas.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BONDLY -->
+<section id="bondly">
+  <h2>The drop worth copying: Bondly, March 2021</h2>
+  <p>Most retellings skip this one — and it is arguably the better model for an independent artist. Three unreleased songs, <b>450 copies</b>, <b>&gt;300 collectors</b>, <b>&gt;$400,000</b> in initial gross sales and resales. The perks for collecting all three — a virtual meet-and-greet, an unreleased track, signed merchandise — are a fan-club / patronage model, not a speculation model. High revenue per fan, no dependence on mass flipping. That is the element that survives best today.</p>
+  <div class="note"><b>Conflicting figure, flagged:</b> Celebrity Net Worth says a separate early-2021 Lanez NFT release “reportedly generated $500,000 in initial and secondary-market transactions during its first 24 hours.” That does not match the Bondly-sourced $400,000 figure — this page treats <b>$400,000+ (Bondly / Music Business Worldwide)</b> as the better-sourced number and $500,000 as unverified.</div>
+</section>
+
+<!-- FAN ECONOMICS -->
+<section id="economics">
+  <h2>Fan economics — pitch vs. reality</h2>
+  <div class="tblwrap"><table>
+    <thead><tr><th></th><th>Traditional streaming (2021)</th><th>Lanez NFT model — as pitched</th><th>What actually happened</th></tr></thead>
+    <tbody>
+      <tr><td data-l=""><b>Artist revenue per fan</b></td><td data-l="Streaming">~$0.003–0.004 per stream; ~250 streams ≈ $1</td><td data-l="Pitched">$1 upfront per copy, immediately, direct-to-fan</td><td data-l="Reality">$1m gross <i>claimed</i>; net to Lanez never established; platform fees and split unknown</td></tr>
+      <tr><td data-l=""><b>Fan's asset</b></td><td data-l="Streaming">Nothing owned — access rented via subscription</td><td data-l="Pitched">A unique token + album + art, resellable at a self-set price</td><td data-l="Reality">Token held in Emmersive's <b>custodial wallet</b>; 28-day lock before external transfer; some transfers and payments never arrived</td></tr>
+      <tr><td data-l=""><b>Artist's ongoing revenue</b></td><td data-l="Streaming">Streaming royalties over time</td><td data-l="Pitched">A % of every resale, “indefinitely”</td><td data-l="Reality">% never disclosed; E-NFT took a 15% seller fee; in today's market secondary royalties are largely optional (see Legal)</td></tr>
+      <tr><td data-l=""><b>Fan's upside</b></td><td data-l="Streaming">None</td><td data-l="Pitched">Flip for profit — Lanez cited a $50,000 flip</td><td data-l="Reality">Resale listings by Mar 2022 ranged $2.50–thousands; many buyers could not sell or get paid at all</td></tr>
+    </tbody>
+  </table></div>
+  <p>Lanez's own framing, in the launch release: fans could “become entrepreneurs as well if they choose to, by having the ability to resell and set their own price on the open market… the next iteration of the music industry, an absolute paradigm shift.” The Kairos Music case study (Mar 2022) made the comparison explicit — fans “invest” in artists like a stock market. That framing is commercially powerful and legally dangerous in equal measure.</p>
+
+  <div class="calc">
+    <h3 style="margin-bottom:4px">Run the real math — the $1 ≈ 250 streams comparison</h3>
+    <p class="small muted">Explainer arithmetic from the research, not an official rate: Spotify's per-stream rate varies and is commonly cited around $0.003–0.004. At $0.004/stream, $1 upfront ≈ 250 streams. Move the sliders to price a ScrollVerse-sized edition.</p>
+    <label for="copies">Copies: <span id="copiesVal" class="mono">250</span></label>
+    <input type="range" id="copies" min="25" max="1000" step="25" value="250">
+    <label for="price">Price per copy: $<span id="priceVal" class="mono">15</span></label>
+    <input type="range" id="price" min="1" max="50" step="1" value="15">
+    <div class="calc-out">
+      <div class="cell"><div class="v" id="grossOut">$3,750</div><div class="l">Primary gross if sold out</div></div>
+      <div class="cell"><div class="v" id="streamsOut">937,500</div><div class="l">Streams to earn the same at $0.004</div></div>
+      <div class="cell"><div class="v" id="perFanOut">$15</div><div class="l">Revenue per fan, upfront</div></div>
+    </div>
+    <p class="small muted" style="margin:12px 0 0">Primary sales are where the money is in 2026. Budget as if secondary royalties are $0 — treat any that arrive as a bonus.</p>
+  </div>
+</section>
+
+<!-- WHAT BROKE -->
+<section id="broke">
+  <h2>What broke — the documented record</h2>
+  <p class="muted">From <i>Rolling Stone</i>'s investigation (Sept 2021), the Kairos Music case study (Mar 2022), and Water &amp; Music.</p>
+  <div class="failgrid">
+    <div class="fail"><div class="n">1</div><p><b>Platform crash</b>E-NFT crashed as soon as the marketplace opened and stayed down for more than 24 hours.</p></div>
+    <div class="fail"><div class="n">2</div><p><b>15% secondary fee</b>Versus a market standard closer to 5% — on top of Ethereum gas. Buyers said it made profiting from a flip unlikely.</p></div>
+    <div class="fail"><div class="n">3</div><p><b>28-day transfer lock</b>Buyers could not move the NFT to an external wallet for 28 days.</p></div>
+    <div class="fail"><div class="n">4</div><p><b>Payout delays over 30 days</b>Customers waited over a month for secondary-sale funds — at least one had the asset removed and a sale confirmed, and never saw payment.</p></div>
+    <div class="fail"><div class="n">5</div><p><b>Failed withdrawals</b>A buyer who moved two copies to her personal wallet got confirmation the transfer completed — the NFTs never arrived.</p></div>
+    <div class="fail"><div class="n">6</div><p><b>Custodial wallets</b>NFTs sat in Emmersive's on-platform wallets; fans could not freely transfer them to wallets they controlled.</p></div>
+    <div class="fail"><div class="n">7</div><p><b>Unresponsive customer service</b>Documented across buyer complaints in the investigation.</p></div>
+    <div class="fail"><div class="n">8</div><p><b>Conflict of interest</b>Lanez was reportedly an early equity holder in Emmersive Entertainment while promoting resale prices on social media. <i>Rolling Stone</i>'s legal sources said that promotion could amount to investment advice, and that a tradable, appreciating asset “could be considered a security and would need to be registered.” No SEC action against Lanez was found — the risk was flagged, not charged.</p></div>
+    <div class="fail"><div class="n">9</div><p><b>Unverified headline</b>The 1m-in-57-seconds / $1m / $50,000-flip claims have no supporting evidence in the public record.</p></div>
+    <div class="fail"><div class="n">10</div><p><b>Platform death — the structural lesson</b>On 17 Nov 2026 at 15:17 UTC, e-nft.com returned a Cloudflare Error 522 “Connection timed out” on a live check (a single check, not proof of permanent shutdown — but no functioning marketplace was found). Anyone who bought <i>When It's Dark</i> depended on one custodial platform for playback and resale. When that platform goes dark, the “ownership” is stranded.</p></div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section id="market">
+  <h2>The market that made it work is gone</h2>
+  <p>As a speculative model, the Lanez play did not survive contact with the market. Trackers use different methodologies — treat the figures as directional, but the direction is unambiguous.</p>
+  <div class="chartbox">
+    <h3 style="margin-bottom:2px">Global NFT trading volume — DappRadar series</h3>
+    <p class="small muted" style="margin:0">Source: DappRadar figures via Kaavon, “NFT Market Evolution”</p>
+    <div class="bar-row"><span class="mono">2022</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><b class="mono">$57.2bn</b></div>
+    <div class="bar-row"><span class="mono">2023</span><div class="bar-track"><div class="bar-fill" style="width:29.4%"></div></div><b class="mono">$16.8bn</b></div>
+    <div class="bar-row"><span class="mono">2024</span><div class="bar-track"><div class="bar-fill" style="width:24%"></div></div><b class="mono">$13.7bn</b></div>
+    <p class="small" style="margin-top:14px">Second tracker, same story — <b>CryptoSlam:</b> $23.8bn in 2022 → $5.63bn in 2025, with monthly sales ~97% below the January 2022 record of $6.05bn by October 2026. Gate.io's retrospective notes secondary activity on <i>When It's Dark</i> “gradually decreased, liquidity became more limited, and price discovery became increasingly difficult” from 2022 onward — the project is now “primarily… a historical case study.”</p>
+    <p class="small" style="margin:0"><b>What survived:</b> the underlying idea, in a different form — direct-to-fan limited editions, token-gated perks and fan passes on Sound.xyz, Zora, Catalog and similar — priced for superfans, not as a mass speculative flip.</p>
+  </div>
+</section>
+
+<!-- LEGAL -->
+<section id="legal">
+  <h2>Legal guardrails — read before minting anything</h2>
+  <p class="muted">General information from the research, not legal advice. Securities, copyright and tax rules differ by jurisdiction and change frequently — get a lawyer before selling anything that shares revenue or promises returns.</p>
+  <h3 style="margin-top:18px">Howey: the single biggest risk</h3>
+  <p>Under <i>SEC v. W.J. Howey Co.</i> (1946), a security exists where there is (i) an investment of money, (ii) in a common enterprise, (iii) with an expectation of profits (iv) from the efforts of others. The SEC applied it to NFTs in 2023:</p>
+  <div class="legal">
+    <div class="case"><div class="amt">&gt;$6.1M</div><h3>Impact Theory — 28 Aug 2023</h3><p class="small" style="margin:0">~$30m raised selling “Founder's Key” NFTs marketed as an investment in the company's growth. Settled for &gt;$6.1m (disgorgement + interest + penalty), no admission.</p></div>
+    <div class="case"><div class="amt">$1M penalty</div><h3>Stoner Cats 2 LLC — 13 Sep 2023</h3><p class="small" style="margin:0">10,420 NFTs at ~$800 — ~$8.2m in 35 minutes to fund a web series. $1m civil penalty; tokens destroyed.</p></div>
+    <div class="case"><div class="amt">$750,000</div><h3>Flyfish Club — Sept 2024</h3><p class="small" style="margin:0">Penalty in the SEC's NFT enforcement run — same pattern: access NFTs sold with an investment frame.</p></div>
+  </div>
+  <div class="note"><b>The 2025–26 shift does not remove the risk:</b> in March 2026 the SEC/CFTC issued a joint interpretive release saying digital collectibles (e.g. CryptoPunks, Chromie Squiggles) are generally <i>not</i> securities — but an NFT sold with a promise of profits, revenue-sharing, yield or fractionalised returns can still be a security. That is agency interpretation, not a statute passed by Congress, and it can change.</div>
+  <div class="dodont">
+    <div class="panel do">
+      <h3 style="color:var(--green)">Market it like this</h3>
+      <ul>
+        <li>A <b>limited collectible / access pass</b> that supports the artist</li>
+        <li>Talk about the music, the artwork, the perks</li>
+        <li>Disclose every fee, any lockup, payout timing, and whether the wallet is custodial</li>
+        <li>Disclose any financial interest you hold in the platform</li>
+        <li>Publish only sales numbers you can evidence — keep records of every claim</li>
+      </ul>
+    </div>
+    <div class="panel dont">
+      <h3 style="color:var(--red)">Never like this</h3>
+      <ul>
+        <li>No promises of profit, appreciation, “flip” returns, yield, or buy-backs</li>
+        <li>No share of your royalties or revenue — unless run as a registered/exempt securities offering with counsel (Reg A / Reg CF / Reg D). There is no cheap shortcut.</li>
+        <li>Never use “invest”, “ROI”, “passive income” — or “earn a royalty based on how many you hold” (the exact Decentar / 3NITY language)</li>
+        <li>No unverified sell-out or flip-price claims — Lanez's tweets became the evidence <i>Rolling Stone</i> focused on</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid2" style="margin-top:14px">
+    <div class="panel">
+      <h3>Copyright &amp; rights</h3>
+      <p class="small" style="margin:0">Buying an NFT does <b>not</b> transfer copyright (US Copyright Office / USPTO joint NFT report, Mar 2024). State the buyer's licence in writing in the sale terms; a copyright transfer itself needs a signed written instrument. Clear the underlying rights first — co-writers, producers, sample owners, label/distributor rights in the masters — and split with collaborators by written agreement, not a Discord handshake.</p>
+    </div>
+    <div class="panel">
+      <h3>Secondary royalties are not guaranteed</h3>
+      <p class="small" style="margin:0">ERC-2981 only <i>signals</i> a royalty — payment is voluntary and marketplace-dependent. OpenSea retired its royalty-enforcement Operator Filter on 31 Aug 2023 and made creator fees optional; Blur and others followed. Enforceable resale income needs a contract-level mechanism (e.g. ERC-721C, or a platform that enforces on its own marketplace like Sound's on-platform royalties) — and even then it only applies where the sale happens.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXCEED PLAYBOOK -->
+<section id="exceed">
+  <h2>The ScrollVerse playbook — mirror, match, exceed</h2>
+  <p>Everything Lanez proved, kept. Everything that hurt his buyers, removed.</p>
+  <div class="mme">
+    <div class="step mirror">
+      <div class="tag">1 · MIRROR</div>
+      <p style="margin:0;font-weight:700">Copy the mechanics that worked</p>
+      <ul>
+        <li>Limited-edition album/EP NFTs, sold direct-to-fan</li>
+        <li>Low, fan-friendly price with <b>card checkout</b> — no wallet needed to buy</li>
+        <li>Bundle: music + unique artwork + exclusive access</li>
+        <li>Primary sale is the revenue event — bypass label/streaming splits on it</li>
+      </ul>
+    </div>
+    <div class="step match">
+      <div class="tag">2 · MATCH</div>
+      <p style="margin:0;font-weight:700">Match the Bondly energy, not the E-NFT hype</p>
+      <ul>
+        <li>Superfan economics: a few hundred collectors, real revenue per fan</li>
+        <li>Collect-the-set perks: meet-and-greet, unreleased track, signed merch</li>
+        <li>Launch-day attention: one drop, one moment, one story</li>
+        <li>Stress-test checkout for launch volume — E-NFT crashed for &gt;24 hours; don't repeat that</li>
+      </ul>
+    </div>
+    <div class="step exceed">
+      <div class="tag" style="color:var(--gold)">3 · EXCEED</div>
+      <p style="margin:0;font-weight:700">Fix every failure he shipped</p>
+      <ul>
+        <li><b>Self-custody from minute one</b> — buyers withdraw to their own wallet immediately; no 28-day lock</li>
+        <li><b>Music that survives the platform</b> — downloadable files + redundant hosting (IPFS/Arweave + normal download)</li>
+        <li><b>Credible scarcity</b> — supply matched to real demand, per-buyer cap of 2–3 (Lanez allowed 100)</li>
+        <li><b>Radical transparency</b> — all fees disclosed up front, low secondary fee, published payout timeline, verifiable sales numbers</li>
+        <li><b>Streaming window</b> — NFT edition first, streaming after — never strand the music or forfeit chart income</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="blueprint">
+    <h3>The blueprint, in one paragraph</h3>
+    <p>Mint a <b>small, numbered edition (e.g. 250 copies at $10–$20)</b> of an unreleased EP on your own contract via Sound.xyz / Zora / Manifold on Base; sell by <b>card + crypto</b>, with a <b>per-buyer cap (e.g. 2–3)</b>; bundle each copy with the music files (downloadable + streamable), unique artwork, and a real perk (listening party, stems, merch discount, ticket pre-sale); let buyers <b>withdraw to their own wallet immediately</b>; disclose fees and payout timing; market it as a <b>limited collectible that supports the artist</b> — never as an investment or a flip. Put the music on streaming after a short exclusivity window.</p>
+    <p class="small" style="margin:0">Sizing note from the research: for an indie artist the equivalent of Lanez's play is a <i>small</i> edition at a fan-friendly price — e.g. 100–1,000 copies at $5–$25 — not 1,000,000 copies. Lanez could attempt 1m because he had ~18m monthly Spotify listeners; an indie artist's scarcity is the point, and 1m copies would destroy it.</p>
+  </div>
+
+  <h3 style="margin-top:24px">The exceed checklist — Lanez failure → ScrollVerse fix</h3>
+  <ul class="checklist">
+    <li><b>Open, exportable standard</b>ERC-721/1155 on an Ethereum L2 (Base, Optimism, Polygon) or Solana — never one startup's closed ledger.</li>
+    <li><b>Own contract</b>Mint via Manifold or equivalent so ScrollVerse keeps control and sets the royalty rules.</li>
+    <li><b>No lockup, fast payouts</b>Instant withdrawal; payouts instant or clearly dated (e.g. T+2), published in the sale terms.</li>
+    <li><b>Fees disclosed, gas negligible</b>Every fee in advance; L2 chains make gas a non-issue — no 15% surprise.</li>
+    <li><b>Verifiable claims only</b>On-chain supply/sales or a third-party sales report behind every number published.</li>
+    <li><b>Interests disclosed</b>Any stake in the platform is stated publicly; resale value is never promoted.</li>
+    <li><b>Rights cleared in writing</b>Masters, co-writers, producers and samples cleared before minting; buyer licence written into the terms.</li>
+    <li><b>Own the relationship</b>Own the files, own the mailing list, own the contract — never the only copy of anything inside someone else's app.</li>
+  </ul>
+
+  <h3 style="margin-top:26px">How it slots into what Chais already built</h3>
+  <div class="fit">
+    <div class="panel"><h3>The Catalog</h3><p class="small" style="margin:0">Pick one unreleased EP or a collectible edition of a catalog track. The NFT edition runs first as the limited window; the streaming release follows on the existing Vydia / Spotify lanes — the drop adds a direct-to-fan layer without touching the catalog's permanent home.</p></div>
+    <div class="panel"><h3>The Vault &amp; Store</h3><p class="small" style="margin:0">The XLVIIIblocks Vault and the Shopify store are the direct-to-fan front door Lanez had to rent from Emmersive. Announce and sell the edition where the audience, the visuals and the merch already live — perks (signed merch, listening party, ticket pre-sale) fulfil through infrastructure that already exists.</p></div>
+    <div class="panel"><h3>The Contract Suite</h3><p class="small" style="margin:0">ScrollVerse already maintains its own contract suite across Ethereum, Polygon, Scroll zkEVM and Base. Minting the edition on ScrollVerse's own contract — on Base or another L2 — keeps custody, royalties logic and the collector relationship inside the house, instead of stranded on a third-party platform the way <i>When It's Dark</i> was.</p></div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section id="platforms">
+  <h2>Platform options that exist now</h2>
+  <p class="muted">From the research's 2026 guides — <b>verify fees and terms live on each platform's own pages before choosing</b>; fees and royalty policies have changed repeatedly.</p>
+  <div class="tblwrap"><table>
+    <thead><tr><th>Platform</th><th>What it is</th><th>Fit</th></tr></thead>
+    <tbody>
+      <tr><td data-l="Platform"><b>Sound.xyz</b></td><td data-l="What">Music-first: limited/open editions, listening parties, comments, Discord access. Artists reportedly keep 100% of primary sales and 100% of secondary royalties <i>on Sound</i>; collectors pay a 0.000777 ETH mint fee; no gas for the artist on Base/Optimism (gas on Ethereum mainnet).</td><td data-l="Fit">Best all-round Lanez-format successor</td></tr>
+      <tr><td data-l="Platform"><b>Catalog</b></td><td data-l="What">1-of-1 music NFTs, treated as digital records; invite-only for artists; artists keep 100% of initial sales.</td><td data-l="Fit">One rare track — not a mass album</td></tr>
+      <tr><td data-l="Platform"><b>Zora</b></td><td data-l="What">Open protocol for open editions and creator-controlled drops on Ethereum/L2s; flexible, cheap minting.</td><td data-l="Fit">Affordable experiments</td></tr>
+      <tr><td data-l="Platform"><b>Nina Protocol / Audius</b></td><td data-l="What">Independent/decentralised music releases and streaming.</td><td data-l="Fit">Streaming + collectible hybrid</td></tr>
+      <tr><td data-l="Platform"><b>Manifold</b></td><td data-l="What">Mint on your <i>own</i> smart contract — you keep control and can set enforceable royalty rules — rather than the marketplace's contract.</td><td data-l="Fit">Maximum control (the exceed move)</td></tr>
+      <tr><td data-l="Platform"><b>OpenSea / Rarible / Magic Eden</b></td><td data-l="What">Largest general marketplaces; useful for secondary liquidity.</td><td data-l="Fit">Secondary only — <b>not</b> for relying on royalties</td></tr>
+      <tr><td data-l="Platform"><b>Royal / Anotherblock</b></td><td data-l="What">Sell royalty-linked assets — fans get a share of streaming royalties. Closest to Lanez's “fan as investor” pitch.</td><td data-l="Fit"><span class="badge failed">Highest legal risk</span> Only with securities counsel and a proper exemption/registration — or don't offer revenue-sharing at all</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- OPEN QUESTIONS -->
+<section id="open">
+  <h2>Open questions — stated plainly</h2>
+  <div class="oq">
+    <ul style="margin:0;padding-left:18px">
+      <li><b>The 1m-in-57-seconds / $1m claim:</b> no on-chain or audited evidence found; treated throughout as Lanez's claim only.</li>
+      <li><b>Lanez's net profit from <i>When It's Dark</i>:</b> never independently established; the platform/artist split and the 15% fee allocation are unknown.</li>
+      <li><b>The exact artist resale royalty % on E-NFT:</b> stated to exist (“a percentage… indefinitely”) but the number was not found in any source.</li>
+      <li><b>The $50,000 flip:</b> Lanez's claim only; no confirmed transaction record found.</li>
+      <li><b>3NITY sales / whether the $1m and royalty promises were honoured:</b> no figures found.</li>
+      <li><b>RIAA certification / Billboard charting for <i>When It's Dark</i>:</b> no certification or chart record found.</li>
+      <li><b>E-NFT.com's permanent status:</b> unreachable (Cloudflare 522) on a single live check, 17 Nov 2026 — could be transient, but no functioning marketplace was found.</li>
+      <li><b>Current platform fees/terms</b> (Sound.xyz, Zora, Catalog, Royal, etc.): taken from 2026 guides; verify live before launching.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section id="sources">
+  <h2>Sources</h2>
+  <p class="muted small">Research compiled 17 November 2026. Key sales claims are the artist's own and were never independently verified — see the flags throughout this page.</p>
+  <h3 style="margin-top:14px">Primary / contemporaneous</h3>
+  <ul class="sources">
+    <li>Vinco Ventures / PRNewswire, 4 Aug 2021 (via StockTitan) — <a href="https://www.stocktitan.net/news/BBIG/vinco-ventures-subsidiary-emmersive-entertainment-announces-music-2xk1oopk8rt0.html" target="_blank" rel="noopener">stocktitan.net</a> · <a href="https://www.prnewswire.com/news-releases/vinco-ventures-subsidiary-emmersive-entertainment-announces-music-streaming-nft-platform-301348285.html" target="_blank" rel="noopener">original PRNewswire release</a></li>
+    <li>Music Business Worldwide, 12 Mar 2021 (Bondly) — <a href="https://www.musicbusinessworldwide.com/music-related-nft-sales-have-topped-25m-in-the-past-month/" target="_blank" rel="noopener">musicbusinessworldwide.com</a></li>
+    <li>MusicTech (Bondly supply) — <a href="https://musictech.com/news/artists-selling-music-nft-making-millions/" target="_blank" rel="noopener">musictech.com</a></li>
+    <li>Market Realist, 9 Aug 2021 — <a href="https://marketrealist.com/p/tory-lanez-nft-album/" target="_blank" rel="noopener">marketrealist.com</a></li>
+    <li>Melody Maker Magazine, 11 Aug 2021 (pre-order limit, resale date) — <a href="https://melodymakermagazine.com/hip-hop/tory-lanez-says-he-sold-1-million-copies-of-his-nft-album-in-under-one-minute/" target="_blank" rel="noopener">melodymakermagazine.com</a></li>
+    <li>The Hype Magazine, 11 Aug 2021 — <a href="https://www.thehypemagazine.com/2021/08/11/tory-lanez-new-album-to-sell-only-1m-copies-via-first-ever-music-streaming-nft/" target="_blank" rel="noopener">thehypemagazine.com</a></li>
+    <li>Decentar Labs release, 17 Jan 2022 (via CryptoCoinStart) — <a href="https://cryptocoinstart.com/tory-lanez-is-releasing-his-nft-collection-with-decentar-labs-2/" target="_blank" rel="noopener">cryptocoinstart.com</a></li>
+  </ul>
+  <h3 style="margin-top:14px">Investigation / analysis</h3>
+  <ul class="sources">
+    <li>HotNewHipHop, 30 Sept 2021, summarising <i>Rolling Stone</i>'s investigation — <a href="https://www.hotnewhiphop.com/404477-tory-lanez-nft-album-when-its-dark-under-scrutiny-after-fan-complaints-news" target="_blank" rel="noopener">hotnewhiphop.com</a></li>
+    <li>Water &amp; Music — <a href="https://www.waterandmusic.com/an-overabundance-of-music-nft-platforms-and-scams/" target="_blank" rel="noopener">waterandmusic.com</a></li>
+    <li>Kairos Music case study, Medium, 22 Mar 2022 — <a href="https://medium.com/@kairosmusic/nfts-in-the-music-industry-case-study-series-tory-lanez-918773f69bab" target="_blank" rel="noopener">medium.com/@kairosmusic</a></li>
+    <li>Gate.io explainer, “What Is Tory Lanez NFT?” (cited from search-index summary; page geo-blocked on live open, 17 Nov 2026) — <a href="https://www.gate.com/learn/articles/what-is-tory-lanez-nft/6883" target="_blank" rel="noopener">gate.com</a></li>
+    <li>Celebrity Net Worth, Tory Lanez — <a href="https://www.celebritynetworth.com/richest-celebrities/richest-rappers/tory-lanez-net-worth/" target="_blank" rel="noopener">celebritynetworth.com</a></li>
+  </ul>
+  <h3 style="margin-top:14px">Legal / market / platforms (2023–2026)</h3>
+  <ul class="sources">
+    <li>SEC Crypto Task Force submission (Lee Reiners), Mar 2025 — <a href="https://www.sec.gov/files/ctf-input-reiners-2025-3-18.pdf" target="_blank" rel="noopener">sec.gov</a></li>
+    <li>Grey Area Labs, “Are NFTs Dead?” Nov 2026 — <a href="https://greyarealabs.co/2026/11/04/are-nfts-dead/" target="_blank" rel="noopener">greyarealabs.co</a></li>
+    <li>Cult of Money, “Are NFTs Securities?” (updated 2 Nov 2026) — <a href="https://www.cultofmoney.com/are-nfts-securities/" target="_blank" rel="noopener">cultofmoney.com</a></li>
+    <li>CryptoVerse Lawyers, “SEC Ends NFT Crackdowns in 2025” — <a href="https://www.cryptoverselawyers.io/sec-nft-enforcement-2025-collectibles-vs-securities/" target="_blank" rel="noopener">cryptoverselawyers.io</a></li>
+    <li>Zipmex, “Music NFTs Explained” (ERC-2981 / OpenSea royalties) — <a href="https://zipmex.com/blog/nft-music/" target="_blank" rel="noopener">zipmex.com</a></li>
+    <li>Kaavon, “NFT Market Evolution” (DappRadar volume) — <a href="https://www.kaavon.com/research/articles/nft-market-evolution-from-collectibles-to-utility" target="_blank" rel="noopener">kaavon.com</a></li>
+    <li>Blockchain Reporter, “Are NFTs Dead? 2026 Data” (CryptoSlam) — <a href="https://blockchainreporter.net/are-nfts-dead/" target="_blank" rel="noopener">blockchainreporter.net</a></li>
+    <li>PixelPlex (Sound.xyz fees) — <a href="https://pixelplex.io/blog/music-nft-marketplace/" target="_blank" rel="noopener">pixelplex.io</a> · FinanceFeeds, 13 Jun 2026 — <a href="https://financefeeds.com/top-10-music-nft-platforms-where-independent-artists-keep-95-of-revenue/" target="_blank" rel="noopener">financefeeds.com</a></li>
+    <li>Unknown Gravity (USPTO / Copyright Office Mar 2024 joint NFT report) — <a href="https://www.unknowngravity.com/en/articulos/intellectual-property-tokenization" target="_blank" rel="noopener">unknowngravity.com</a></li>
+    <li>Live check by this research: e-nft.com — Cloudflare Error 522, “Connection timed out”, observed 17 Nov 2026, 15:17 UTC.</li>
+  </ul>
+</section>
+
+<footer>
+  <p>Built for Chais Hill / ScrollVerse from deep research dated 17 November 2026. This page is general information, not legal or financial advice. Nothing here is an offer to sell a security, a token, or an NFT. Verify every platform's live fees and terms, and take securities counsel before any drop that shares revenue or promises returns.</p>
+</footer>
+
+</div>
+<script>
+(function(){
+  var copies=document.getElementById('copies'), price=document.getElementById('price');
+  var cv=document.getElementById('copiesVal'), pv=document.getElementById('priceVal');
+  var gross=document.getElementById('grossOut'), streams=document.getElementById('streamsOut'), perFan=document.getElementById('perFanOut');
+  function fmt(n){return n.toLocaleString('en-US');}
+  function update(){
+    var c=parseInt(copies.value,10), p=parseInt(price.value,10);
+    var g=c*p;
+    cv.textContent=fmt(c); pv.textContent=p;
+    gross.textContent='$'+fmt(g);
+    streams.textContent=fmt(Math.round(g/0.004));
+    perFan.textContent='$'+p;
+  }
+  copies.addEventListener('input',update);
+  price.addEventListener('input',update);
+  update();
+})();
+</script>
+</body>
+</html>

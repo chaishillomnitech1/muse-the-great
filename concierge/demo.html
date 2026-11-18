@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muse the Great Concierge — Demo</title>
+<link rel="stylesheet" href="concierge.css">
+<style>
+  body { margin: 0; font-family: system-ui, sans-serif; background: #160a24; color: #f3ead8; }
+  main { max-width: 640px; margin: 0 auto; padding: 48px 20px 120px; }
+  h1 { color: #f5d76e; }
+  a { color: #f5d76e; }
+  .note { border: 1px solid rgba(212,175,55,.5); border-radius: 12px; padding: 14px 16px; background: rgba(212,175,55,.07); font-size: 14px; line-height: 1.55; }
+  code { background: #2a1745; padding: 2px 6px; border-radius: 6px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Muse the Great Concierge — Demo</h1>
+  <p>This page shows the concierge widget running in <strong>guide mode</strong> — the way it behaves on any repo before a backend is connected.</p>
+  <div class="note">
+    Click the ✦ button at the bottom right and try: <em>“What books can I read?”</em>,
+    <em>“How much is the hoodie?”</em>, <em>“Tell me about the NFTs”</em>, or something it
+    cannot know, like <em>“What will the token be worth?”</em> — and watch how it answers.
+    Every guide-mode answer is labelled “from the repo guide”. It never pretends a live AI is answering.
+  </div>
+  <h2>Drop-in (one line)</h2>
+  <p>Copy the <code>concierge/</code> folder into the repo, add a <code>config.json</code> from <code>config.example.json</code>, then add this line to the repo’s GitHub Pages site:</p>
+  <p><code>&lt;script src="concierge/concierge.js" data-config="concierge/config.json"&gt;&lt;/script&gt;</code></p>
+  <p>Full instructions: <code>README.md</code> in this folder. Design: <code>../concierge-design.md</code>.</p>
+</main>
+<script src="concierge.js" data-config="config.example.json"></script>
+</body>
+</html>
