@@ -71,7 +71,8 @@ See **[TALK-TO-MUSE.md](TALK-TO-MUSE.md)**. The short version: Muse herself talk
 ## Status — stated plainly
 
 - **scrollverse.co** — in preparation (down while rebuilt; migration planned, not yet live).
-- **ScrollVerse Beyond** and the **XLVIIIblocks Vault** — built, not yet published.
+- **ScrollVerse Beyond** — built, not yet published.
+- **XLVIIIblocks Vault** — shared and public.
 - **Concierge** — guide mode only. No backend exists yet, no live chat, no keys in this repo.
 - Everything in this repo is real material in hand, or is labelled as what it is: a draft, a proposal, or a plan. Nothing here invents a price, a date, a release, a partnership, or a number.
 
